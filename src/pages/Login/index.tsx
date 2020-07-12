@@ -1,15 +1,19 @@
-import React from "react";
+import React, { FC } from "react";
 import { Helmet } from "react-helmet";
 import { AppName } from "../../context/App";
 import PrimaryButton, { ButtonType } from "../../components/Button";
-import { ArrowRight } from "@styled-icons/feather";
+import { ArrowRight, UserPlus } from "@styled-icons/feather";
 import { useTranslation } from "react-i18next";
 import { NavLink } from "react-router-dom";
 
-const Login = () => {
+interface iProp {
+    history?: any;
+}
+
+const Login: FC<iProp> = ({ history }) => {
     document.body.className = "login";
     const { t } = useTranslation();
-    
+
     return (
         <>
             <Helmet>
@@ -62,11 +66,15 @@ const Login = () => {
                                 </div>
                                 <div className="intro-x mt-5 xl:mt-8 text-center xl:text-left">
                                     <PrimaryButton type={ButtonType.submit} loading={false} className="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
-                                        Login <ArrowRight size={24} />
+                                        Login <ArrowRight size={18} />
                                     </PrimaryButton>
 
-                                    <button type="button" className="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 mt-3 xl:mt-0">
-                                        Sign up
+                                    <button
+                                        type="button"
+                                        onClick={() => history.push("/create-account")}
+                                        className="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 mt-3 xl:mt-0"
+                                    >
+                                        Sign up <UserPlus size={18} color="#1b56f2" />
                                     </button>
                                 </div>
                             </form>
