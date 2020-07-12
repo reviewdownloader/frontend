@@ -185,5 +185,7 @@
     "login_title": "A few more clicks to",
     "login_title_2": "sign in to your account.",
     "login_title_desc": "Manage all your investment in one place",
-    "login_desc": "A few more clicks to sign in to your account. Manage all your investment in one place"
+    "login_desc": "A few more clicks to sign in to your account. Manage all your investment in one place",
+    "sign_up_title_2" :"sign up to your account",
+    "btn-register": "Register"
 }
