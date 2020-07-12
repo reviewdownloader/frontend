@@ -3,12 +3,16 @@ import "./App.css";
 import "./i18n";
 import { Switch, Route } from "react-router-dom";
 import Login from "./pages/Login";
+import CreateAccount from "./pages/CreateAccount";
+import NotFound from "./pages/404";
 
 function App() {
+    document.body.className ="app"
     return (
         <Switch>
-            <Route path="" component={Login} />
-            <Route component={() => <h3>NOt found!</h3>} />
+            <Route exact path="/" component={Login} />
+            <Route path="/create-account" component={CreateAccount} />
+            <Route component={NotFound} />
         </Switch>
     );
 }
