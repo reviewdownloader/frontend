@@ -4,7 +4,6 @@ import { AppName } from "../context/App";
 import PrimaryButton, { ButtonType } from "../components/Button";
 import { ArrowRight, ArrowLeft } from "@styled-icons/feather";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
 
 interface iProp {
     history?: any;
