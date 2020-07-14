@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronRight, Home, CreditCard, Users, User, Settings, ChevronDown, Activity, CheckCircle, ShoppingBag, Lock, ToggleRight, Database } from "@styled-icons/feather";
+import { ChevronRight, Home, CreditCard, Users, User, Settings, ChevronDown, Activity, CheckCircle, ShoppingBag, Lock, ToggleRight, Database, Columns } from "@styled-icons/feather";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { authService } from "./../services/Authentication.Service";
@@ -157,6 +157,14 @@ const TopNavigation = () => {
                         </a>
                         <ul className="">
                             <li>
+                                <NavLink exact to="/app/payout" className="top-menu">
+                                    <div className="top-menu__icon">
+                                        <ShoppingBag size={18} />
+                                    </div>
+                                    <div className="top-menu__title">Payout </div>
+                                </NavLink>
+                            </li>
+                            <li>
                                 <NavLink exact to="/app/investment-approval" className="top-menu">
                                     <div className="top-menu__icon">
                                         <CheckCircle size={18} />
@@ -167,7 +175,7 @@ const TopNavigation = () => {
                             <li>
                                 <NavLink exact to="/app/active-investment" className="top-menu">
                                     <div className="top-menu__icon">
-                                        <ShoppingBag size={18} />
+                                        <Columns size={18} />
                                     </div>
                                     <div className="top-menu__title"> Active Investment </div>
                                 </NavLink>
@@ -175,9 +183,9 @@ const TopNavigation = () => {
                             <li>
                                 <NavLink exact to="/app/active-investment" className="top-menu">
                                     <div className="top-menu__icon">
-                                        <CreditCard size={18} />
+                                        <Users size={18} />
                                     </div>
-                                    <div className="top-menu__title"> Referral Bonus</div>
+                                    <div className="top-menu__title">Referral Bonus</div>
                                 </NavLink>
                             </li>
                         </ul>
