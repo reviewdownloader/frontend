@@ -16,6 +16,11 @@ const USER_PROP = gql`
         dob
         verified
         image
+        referred {
+            id
+            firstname
+            email
+        }
     }
 `;
 export const LOGIN = gql`
