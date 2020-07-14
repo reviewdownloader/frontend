@@ -79,3 +79,16 @@ export const UPDATE_PASSWORD = gql`
         UpdatePassword(password: $new, oldPassword: $current)
     }
 `;
+
+export const REQUEST_EMAIL = gql`
+    mutation RequestForNewEmail($email: String!) {
+        SendEmailModificationRequest(email: $email)
+    }
+`;
+export const UPDATE_EMAIL = gql`
+    mutation NewEmail($email: String!, $code: String!) {
+        UpdateEmailAddress(email: $email, code: $code) {
+            message
+        }
+    }
+`;

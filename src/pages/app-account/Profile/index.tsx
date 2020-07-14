@@ -9,6 +9,7 @@ import UserInformation from "./Information";
 import UpdateImage from "./UpdateImage";
 import UpdateInformation from "./UpdateInformation";
 import UpdatePassword from './ChangePassword';
+import UpdateEmail from './UpdateEmail';
 
 const Profile = () => {
     const { t } = useTranslation();
@@ -67,6 +68,7 @@ const Profile = () => {
                         <Route path="/app/profile/change-image" component={UpdateImage} />
                         <Route path="/app/profile/update" component={UpdateInformation} />
                         <Route path="/app/profile/change-password" component={UpdatePassword} />
+                        <Route path="/app/profile/change-email" component={UpdateEmail} />
                     </Switch>
                 </div>
             </div>
