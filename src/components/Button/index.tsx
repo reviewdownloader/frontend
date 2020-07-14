@@ -34,3 +34,21 @@ const PrimaryButton: FC<iProp> = ({ loading, type, children, onClick, className,
 };
 
 export default PrimaryButton;
+
+interface props {
+    loading: boolean;
+    className?: string;
+}
+export const LoadingIcon: FC<props> = ({ loading, className }) => {
+    if (loading)
+        return (
+            <div className={`lds-ring lds-ring-themed mt-5 ${className}`}>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        );
+
+    return null;
+};
