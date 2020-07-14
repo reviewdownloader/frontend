@@ -28,13 +28,13 @@ const CreateAccount: FC<iProp> = ({ history }) => {
                 <div className="block xl:grid grid-cols-2 gap-4">
                     <div className="hidden xl:flex flex-col min-h-screen">
                         <a href="/" className="-intro-x flex items-center pt-5">
-                            <img alt="Investment bot" className="w-6" src="assets/images/logo.svg" />
+                            <img alt="Investment bot" className="w-6" src="dist/images/logo.svg" />
                             <span className="text-white text-lg ml-3">
                                 Trade<span className="font-medium">Bot</span>
                             </span>
                         </a>
                         <div className="my-auto">
-                            <img alt="investment bot" className="-intro-x w-1/2 -mt-16" src="assets/images/Site-constructor.svg" />
+                            <img alt="investment bot" className="-intro-x w-1/2 -mt-16" src="dist/images/Site-constructor.svg" />
                             <div className="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                                 {t("login_title")}
                                 <br />
@@ -56,13 +56,14 @@ const CreateAccount: FC<iProp> = ({ history }) => {
                                 <div className="intro-x mt-8">
                                     {step === 1 && (
                                         <>
-                                            <input type="text" className="intro-x login__input input input--lg border border-gray-300" placeholder={t("name.first.label")} />
-                                            <input type="text" className="intro-x login__input input input--lg border border-gray-300 block mt-4" placeholder={t("name.last.label")} />
-                                            <input type="email" className="intro-x login__input input input--lg border border-gray-300 block mt-4" name="email" placeholder={t("email.label")} />
-                                            <input type="text" className="intro-x login__input input input--lg border border-gray-300 block mt-4" placeholder={t("phone.label")} />
+                                            <input required type="text" className="intro-x login__input input input--lg border border-gray-300" placeholder={t("name.first.label")} />
+                                            <input required type="text" className="intro-x login__input input input--lg border border-gray-300 block mt-4" placeholder={t("name.last.label")} />
+                                            <input required type="email" className="intro-x login__input input input--lg border border-gray-300 block mt-4" name="email" placeholder={t("email.label")} />
+                                            <input required type="text" className="intro-x login__input input input--lg border border-gray-300 block mt-4" placeholder={t("phone.label")} />
                                             <Select
                                                 className="intro-x mt-4"
                                                 isMulti={false}
+                                                
                                                 placeholder={t("gender.label")}
                                                 options={[
                                                     { value: "Male", label: "Male" },
@@ -97,10 +98,10 @@ const CreateAccount: FC<iProp> = ({ history }) => {
                                         <div className="intro-x flex items-center text-gray-700 mt-4 text-xs sm:text-sm">
                                             <input type="checkbox" className="input border mr-2" id="remember-me" />
                                             <label className="cursor-pointer select-none" htmlFor="remember-me">
-                                                I agree to the {AppName}
+                                                {t("agree")} {AppName}
                                             </label>
                                             <a className="text-theme-1 ml-1" href="/">
-                                                Privacy Policy
+                                               {t("policy")}
                                             </a>
                                             .
                                         </div>
