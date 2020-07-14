@@ -7,6 +7,7 @@ import { Lock, Edit3, Settings, Shield, Image } from "@styled-icons/feather";
 import { NavLink, Switch, Route } from "react-router-dom";
 import UserInformation from "./Information";
 import UpdateImage from './UpdateImage';
+import UpdateInformation from "./UpdateInformation";
 
 const Profile = () => {
     const { t } = useTranslation();
@@ -40,7 +41,7 @@ const Profile = () => {
                                 <Shield className="w-4 h-4 mr-2" />
                                 {t("info")}
                             </NavLink>
-                            <NavLink  activeClassName="text-theme-1" className="flex items-center mt-5 hover:bg-gray-200 p-3" to="/app/profile/change-image">
+                            <NavLink activeClassName="text-theme-1" className="flex items-center mt-5 hover:bg-gray-200 p-3" to="/app/profile/change-image">
                                 <Image className="w-4 h-4 mr-2" />
                                 {t("change_image")}
                             </NavLink>
@@ -62,7 +63,8 @@ const Profile = () => {
                 <div className="col-span-12 lg:col-span-8 xxl:col-span-9">
                     <Switch>
                         <Route exact path="/app/profile" component={() => <UserInformation user={user} />} />
-                        <Route  path="/app/profile/change-image" component={UpdateImage} />
+                        <Route path="/app/profile/change-image" component={UpdateImage} />
+                        <Route path="/app/profile/update" component={UpdateInformation} />
                     </Switch>
                 </div>
             </div>

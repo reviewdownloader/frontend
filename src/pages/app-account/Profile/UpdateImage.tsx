@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { authService } from "./../../../services/Authentication.Service";
-import { X } from "@styled-icons/feather";
+import { X, Image } from "@styled-icons/feather";
 import { useTranslation } from "react-i18next";
 import { toast } from "react-toastify";
 import { CleanMessage } from "./../../../context/App";
@@ -32,7 +32,9 @@ const UpdateImage = () => {
     return (
         <div className="intro-y box lg:mt-5" style={{ minHeight: "65vh" }}>
             <div className="flex items-center p-5 border-b border-gray-200">
-                <h2 className="font-medium text-base mr-auto">{t("change_image")}</h2>
+                <h2 className="font-medium text-base mr-auto">
+                    <Image className="w-4 h-4 mr-2 text-theme-1" /> {t("change_image")}
+                </h2>
             </div>
             <div className="p-5">
                 <div className="grid grid-cols-12 gap-5">

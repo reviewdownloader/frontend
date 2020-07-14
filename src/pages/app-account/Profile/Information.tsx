@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import { User } from "./../../../model/user.model";
-import { Mail, PhoneCall, Globe, User as UserIcon } from "@styled-icons/feather";
+import { Mail, PhoneCall, Globe, User as UserIcon, Shield } from "@styled-icons/feather";
 import { useTranslation } from "react-i18next";
 import { CleanDate } from "../../../context/App";
 
@@ -14,7 +14,9 @@ const UserInformation: FC<IProps> = ({ user }) => {
         return (
             <div className="intro-y box lg:mt-5">
                 <div className="flex items-center p-5 border-b border-gray-200">
-                    <h2 className="font-medium text-base mr-auto">{t("display")}</h2>
+                    <h2 className="font-medium text-base mr-auto">
+                        <Shield className="w-4 h-4 mr-2 text-theme-1" /> {t("display")}
+                    </h2>
                 </div>
                 <div className="p-5">
                     <div className="flex flex-col lg:flex-row border-b border-gray-200 pb-5 -mx-5">

@@ -61,3 +61,16 @@ export const UPDATE_IMAGE = gql`
     }
     ${USER_PROP}
 `;
+
+export const UPDATE_ACCOUNT = gql`
+    mutation UpdateAccount($id: ID!, $update: UserUpdateInput!) {
+        UpdateAccount(id: $id, update: $update) {
+            message
+            doc {
+                ...UserProps
+                referralCode
+            }
+        }
+    }
+    ${USER_PROP}
+`;

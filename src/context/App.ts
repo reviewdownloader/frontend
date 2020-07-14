@@ -14,9 +14,9 @@ export const UploadPreset = () => REACT_APP_UploadPreset || "";
 export const AppName = "New Investment Bot";
 
 export const CleanMessage = (message: string) => {
-    if (message === "Context creation failed: jwt expired") {
+    if (message?.includes("Unauthorized access!")) {
         authService.Logout();
-        return "";
+        window.location.reload(true);
     }
     return message.replace("GraphQL error:", "").replace("Network error:", "");
 };
