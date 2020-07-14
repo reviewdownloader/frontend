@@ -48,3 +48,16 @@ export const GET_YOUR_REFERRALS = gql`
     }
     ${USER_PROP}
 `;
+
+export const UPDATE_IMAGE = gql`
+    mutation UpdateProfileImage($path: String!) {
+        UpdateProfile(path: $path) {
+            message
+            doc {
+                ...UserProps
+                referralCode
+            }
+        }
+    }
+    ${USER_PROP}
+`;

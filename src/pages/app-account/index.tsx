@@ -29,7 +29,7 @@ const AppAccount = () => {
                     <Route exact path="/app" component={Dashboard} />
                     <Route exact path="/app/user-investment" component={YourInvestment} />
                     <Route exact path="/app/referral" component={YourReferral} />
-                    <Route exact path="/app/profile" component={Profile} />
+                    <Route  path="/app/profile" component={Profile} />
                 </Switch>
             </div>
         </>

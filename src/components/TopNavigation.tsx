@@ -1,5 +1,5 @@
 import React from "react";
-import { ChevronRight, Home, CreditCard, Users, User, Settings, ChevronDown, Activity, CheckCircle, ShoppingBag, Lock, ToggleRight, Database, Columns } from "@styled-icons/feather";
+import { ChevronRight, Home, CreditCard, Users, User, Settings, ChevronDown, Activity, CheckCircle, ShoppingBag, ToggleRight, Database, Columns, Edit3, Shield } from "@styled-icons/feather";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { authService } from "./../services/Authentication.Service";
@@ -26,7 +26,7 @@ const TopNavigation = () => {
                         </a>
                         <ChevronRight size={18} />
                         <a href="/app" className="breadcrumb--active">
-                           {t("home.caption")}
+                            {t("home.caption")}
                         </a>
                     </div>
                     <div className="intro-x relative mr-3 sm:mr-6">
@@ -46,19 +46,26 @@ const TopNavigation = () => {
                                 </div>
                                 <div className="p-2">
                                     <NavLink to="/app/profile" className="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
-                                        <User className="w-4 h-4 mr-2" size={18} /> Profile
+                                        <User className="w-4 h-4 mr-2" size={18} /> {t("side.profile")}
                                     </NavLink>
 
-                                    <NavLink to="/" className="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
-                                        <Lock className="w-4 h-4 mr-2" size={18} /> Reset Password
+                                    <NavLink to="/app/profile/change-password" className="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
+                                        <Shield className="w-4 h-4 mr-2" size={18} /> {t("change_password")}
+                                    </NavLink>
+                                    <NavLink to="/app/profile/update" className="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
+                                        <Edit3 className="w-4 h-4 mr-2" size={18} /> {t("account_setting")}
                                     </NavLink>
                                 </div>
                                 <div className="p-2 border-t border-theme-40">
-                                    <NavLink to="#" onClick={(event) =>{
-                                        event.preventDefault();
-                                        authService.Logout();
-                                        document.location.href = "/";
-                                    } } className="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
+                                    <NavLink
+                                        to="#"
+                                        onClick={(event) => {
+                                            event.preventDefault();
+                                            authService.Logout();
+                                            document.location.href = "/";
+                                        }}
+                                        className="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md"
+                                    >
                                         <ToggleRight className="w-4 h-4 mr-2" size={18} /> Logout
                                     </NavLink>
                                 </div>
@@ -94,7 +101,7 @@ const TopNavigation = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink exact to="/app/profile" className="top-menu" activeClassName="top-menu--active">
+                        <NavLink to="/app/profile" className="top-menu" activeClassName="top-menu--active">
                             <div className="top-menu__icon">
                                 <User size={18} />
                             </div>
@@ -149,7 +156,7 @@ const TopNavigation = () => {
                     <li>
                         <a href="javascript:;" className="top-menu">
                             <div className="top-menu__icon">
-                                <Box size={18}/>
+                                <Box size={18} />
                             </div>
                             <div className="top-menu__title">
                                 Admin Corner <ChevronDown size={18} />
