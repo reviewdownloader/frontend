@@ -1,18 +1,43 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Helmet } from "react-helmet";
 import { AppName } from "../../context/App";
 import PrimaryButton, { ButtonType } from "../../components/Button";
 import { ArrowRight, UserPlus } from "@styled-icons/feather";
 import { useTranslation } from "react-i18next";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
+import { LOGIN } from "../../queries/user.query";
+import { useMutation } from "@apollo/react-hooks";
+import { authService } from "../../services/Authentication.Service";
+import { toast } from "react-toastify";
+import { CleanMessage } from "./../../context/App";
 
 interface iProp {
     history?: any;
+    location?: any;
 }
 
-const Login: FC<iProp> = ({ history }) => {
+const Login: FC<iProp> = ({ history, location }) => {
     document.body.className = "login";
     const { t } = useTranslation();
+    //
+    const [model, setModel] = useState({ email: "", password: "" });
+    const [attempt, SetAttempt] = useState(0);
+
+    const [loginFunc, { loading }] = useMutation(LOGIN, {
+        onError: (error) => toast.error(CleanMessage(error.message)),
+        onCompleted: (data) => {
+            if (data.Login) {
+                const { token, doc } = data.Login;
+                authService.Login(doc, token);
+                const { from } = location.state || {
+                    from: { pathname: "/app" },
+                };
+                document.location.href = from.pathname;
+            }
+        },
+    });
+
+    if(authService.IsAuthenticated()) return <Redirect to="/app" />
 
     return (
         <>
@@ -26,13 +51,13 @@ const Login: FC<iProp> = ({ history }) => {
                 <div className="block xl:grid grid-cols-2 gap-4">
                     <div className="hidden xl:flex flex-col min-h-screen">
                         <a href="/" className="-intro-x flex items-center pt-5">
-                            <img alt="Investment bot" className="w-6" src="assets/images/logo.svg" />
+                            <img alt="Investment bot" className="w-6" src="dist/images/logo.svg" />
                             <span className="text-white text-lg ml-3">
                                 Trade<span className="font-medium">Bot</span>
                             </span>
                         </a>
                         <div className="my-auto">
-                            <img alt="investment bot" className="-intro-x w-1/2 -mt-16" src="assets/images/Site-constructor.svg" />
+                            <img alt="investment bot" className="-intro-x w-1/2 -mt-16" src="dist/images/Site-constructor.svg" />
                             <div className="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                                 {t("login_title")}
                                 <br />
@@ -47,46 +72,69 @@ const Login: FC<iProp> = ({ history }) => {
                             <h2 className="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">{t("login.caption")}</h2>
                             <div className="intro-x mt-2 text-gray-500 xl:hidden text-center">{t("login_desc")}</div>
                             <form
-                                onSubmit={(event) => {
+                                onSubmit={async (event) => {
                                     event.preventDefault();
+                                    await loginFunc({
+                                        variables: {
+                                            email: model.email,
+                                            password: model.password,
+                                            option: {
+                                                attempt,
+                                                userAgent: navigator.userAgent,
+                                            },
+                                        },
+                                    });
                                 }}
                             >
                                 <div className="intro-x mt-8">
-                                    <input type="email" className="intro-x login__input input input--lg border border-gray-300 block" placeholder="Email" />
-                                    <input type="password" className="intro-x login__input input input--lg border border-gray-300 block mt-4" placeholder="Password" />
+                                    <input
+                                        defaultValue={model.email}
+                                        onChange={({ currentTarget: { value } }) => setModel({ ...model, email: value })}
+                                        type="email"
+                                        required
+                                        className="intro-x login__input input input--lg border border-gray-300 block"
+                                        placeholder={t("email.placeholder")}
+                                    />
+                                    <input
+                                        defaultValue={model.password}
+                                        type="password"
+                                        required
+                                        onChange={({ currentTarget: { value } }) => setModel({ ...model, password: value })}
+                                        className="intro-x login__input input input--lg border border-gray-300 block mt-4"
+                                        placeholder={t("password.placeholder")}
+                                    />
                                 </div>
                                 <div className="intro-x flex text-gray-700 text-xs sm:text-sm mt-4">
                                     <div className="flex items-center mr-auto">
                                         <input type="checkbox" className="input border mr-2" id="remember-me" />
                                         <label className="cursor-pointer select-none" htmlFor="remember-me">
-                                            Remember me
+                                            {t("remember.text")}
                                         </label>
                                     </div>
-                                    <NavLink to="/forgot-password">Forgot Password?</NavLink>
+                                    <NavLink to="/forgot-password">{t("forget.password")}</NavLink>
                                 </div>
                                 <div className="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                                    <PrimaryButton type={ButtonType.submit} loading={false} className="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
-                                        Login <ArrowRight size={18} />
+                                    <PrimaryButton type={ButtonType.submit} loading={loading} disabled={loading} className="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
+                                        {t("login")} <ArrowRight size={18} />
                                     </PrimaryButton>
-
                                     <button
                                         type="button"
                                         onClick={() => history.push("/create-account")}
                                         className="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 mt-3 xl:mt-0"
                                     >
-                                        Sign up <UserPlus size={18} color="#1b56f2" />
+                                        {t("sign_up")} <UserPlus size={18} color="#1b56f2" />
                                     </button>
                                 </div>
                             </form>
                             <div className="intro-x mt-10 xl:mt-24 text-gray-700 text-center xl:text-left">
-                                By signin up, you agree to our
+                                {t("terms_intro")}
                                 <br />
                                 <a className="text-theme-1" href="/">
-                                    Terms and Conditions
+                                    {t("terms")}{" "}
                                 </a>
                                 &{" "}
                                 <a className="text-theme-1" href="/">
-                                    Privacy Policy
+                                    {t("policy")}
                                 </a>
                             </div>
                         </div>

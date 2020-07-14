@@ -25,13 +25,13 @@ const ForgotPassword: FC<iProp> = ({ history }) => {
                 <div className="block xl:grid grid-cols-2 gap-4">
                     <div className="hidden xl:flex flex-col min-h-screen">
                         <a href="/" className="-intro-x flex items-center pt-5">
-                            <img alt="Investment bot" className="w-6" src="assets/images/logo.svg" />
+                            <img alt="Investment bot" className="w-6" src="dist/images/logo.svg" />
                             <span className="text-white text-lg ml-3">
                                 Trade<span className="font-medium">Bot</span>
                             </span>
                         </a>
                         <div className="my-auto">
-                            <img alt="investment bot" className="-intro-x w-1/2 -mt-16" src="assets/images/Site-constructor.svg" />
+                            <img alt="investment bot" className="-intro-x w-1/2 -mt-16" src="dist/images/Site-constructor.svg" />
                             <div className="-intro-x text-white font-medium text-4xl leading-tight mt-10">
                                 {t("login_title")}
                                 <br />

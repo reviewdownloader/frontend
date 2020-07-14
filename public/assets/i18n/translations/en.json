@@ -187,5 +187,11 @@
     "login_title_desc": "Manage all your investment in one place",
     "login_desc": "A few more clicks to sign in to your account. Manage all your investment in one place",
     "sign_up_title_2" :"sign up to your account",
-    "btn-register": "Register"
+    "btn-register": "Register",
+
+    "terms_intro": "By signing up, you agree to our",
+    "terms": "Terms and Conditions",
+    "policy": "Privacy Policy",
+    "sign_up": "Sign up",
+    "agree": "I agree to the"
 }

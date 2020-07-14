@@ -18,5 +18,4 @@ export class User {
     investments: Array<Investment> = [];
     image = "";
     privateKey = "";
-    referrer = new User();
 }
