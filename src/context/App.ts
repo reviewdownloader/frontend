@@ -1,3 +1,4 @@
+import { authService } from "./../services/Authentication.Service";
 const { REACT_APP_BASE_URL, REACT_APP_WalletAddress, REACT_APP_ReferralBonus, REACT_APP_UploadBaseUrl, REACT_APP_UploadPreset } = process.env;
 
 export const AppUrl = () => REACT_APP_BASE_URL || "";
@@ -12,7 +13,13 @@ export const UploadPreset = () => REACT_APP_UploadPreset || "";
 
 export const AppName = "New Investment Bot";
 
-export const CleanMessage = (message: string) => message.replace("GraphQL error:", "").replace("Network error:", "");
+export const CleanMessage = (message: string) => {
+    if (message === "Context creation failed: jwt expired") {
+        authService.Logout();
+        return "";
+    }
+    return message.replace("GraphQL error:", "").replace("Network error:", "");
+};
 
 export const CleanDate = (date: string, onlyDate = false, short = true) =>
     onlyDate
