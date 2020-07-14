@@ -16,7 +16,7 @@ const SecuredRoute: React.FC<IProp> = ({ component: Component, ...rest }) => (
             ) : (
                 <Redirect
                     to={{
-                        pathname: "/login",
+                        pathname: "/",
                         state: { from: props.location },
                         search: `?redirect=${props.location.pathname}`,
                     }}
