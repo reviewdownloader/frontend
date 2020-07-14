@@ -21,7 +21,7 @@ const Login: FC<iProp> = ({ history, location }) => {
     const { t } = useTranslation();
     //
     const [model, setModel] = useState({ email: "", password: "" });
-    const [attempt, SetAttempt] = useState(0);
+    const [attempt] = useState(0);
 
     const [loginFunc, { loading }] = useMutation(LOGIN, {
         onError: (error) => toast.error(CleanMessage(error.message)),
