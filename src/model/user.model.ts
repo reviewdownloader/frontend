@@ -17,5 +17,5 @@ export class User {
     referred: Array<User> = [];
     investments: Array<Investment> = [];
     image = "";
-    privateKey = "";
+    referralCode = "";
 }
