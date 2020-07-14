@@ -16,7 +16,6 @@ const USER_PROP = gql`
         dob
         verified
         image
-        
     }
 `;
 export const LOGIN = gql`
@@ -25,8 +24,21 @@ export const LOGIN = gql`
             message
             doc {
                 ...UserProps
+                referralCode
             }
             token
+        }
+    }
+    ${USER_PROP}
+`;
+
+export const GET_YOUR_REFERRALS = gql`
+    query GetYourReferrals {
+        GetYourReferrals {
+            docs {
+                ...UserProps
+                referralCode
+            }
         }
     }
     ${USER_PROP}
