@@ -54,7 +54,11 @@ const TopNavigation = () => {
                                     </NavLink>
                                 </div>
                                 <div className="p-2 border-t border-theme-40">
-                                    <NavLink to="/" className="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
+                                    <NavLink to="#" onClick={(event) =>{
+                                        event.preventDefault();
+                                        authService.Logout();
+                                        document.location.href = "/";
+                                    } } className="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
                                         <ToggleRight className="w-4 h-4 mr-2" size={18} /> Logout
                                     </NavLink>
                                 </div>
