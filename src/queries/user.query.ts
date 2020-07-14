@@ -74,3 +74,8 @@ export const UPDATE_ACCOUNT = gql`
     }
     ${USER_PROP}
 `;
+export const UPDATE_PASSWORD = gql`
+    mutation UpdatePassword($current: String!, $new: String!) {
+        UpdatePassword(password: $new, oldPassword: $current)
+    }
+`;

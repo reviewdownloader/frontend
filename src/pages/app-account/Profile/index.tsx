@@ -6,8 +6,9 @@ import { authService } from "./../../../services/Authentication.Service";
 import { Lock, Edit3, Settings, Shield, Image } from "@styled-icons/feather";
 import { NavLink, Switch, Route } from "react-router-dom";
 import UserInformation from "./Information";
-import UpdateImage from './UpdateImage';
+import UpdateImage from "./UpdateImage";
 import UpdateInformation from "./UpdateInformation";
+import UpdatePassword from './ChangePassword';
 
 const Profile = () => {
     const { t } = useTranslation();
@@ -65,6 +66,7 @@ const Profile = () => {
                         <Route exact path="/app/profile" component={() => <UserInformation user={user} />} />
                         <Route path="/app/profile/change-image" component={UpdateImage} />
                         <Route path="/app/profile/update" component={UpdateInformation} />
+                        <Route path="/app/profile/change-password" component={UpdatePassword} />
                     </Switch>
                 </div>
             </div>

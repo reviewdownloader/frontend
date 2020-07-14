@@ -109,14 +109,6 @@ const TopNavigation = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink exact to="/app/setting" className="top-menu" activeClassName="top-menu--active">
-                            <div className="top-menu__icon">
-                                <Settings size={18} />
-                            </div>
-                            <div className="top-menu__title"> {t("setting")} </div>
-                        </NavLink>
-                    </li>
-                    <li>
                         <a href="javascript:;" className="top-menu">
                             <div className="top-menu__icon">
                                 <Database size={18} />
