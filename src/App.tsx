@@ -7,15 +7,25 @@ import CreateAccount from "./pages/CreateAccount";
 import NotFound from "./pages/404";
 import ForgotPassword from "./pages/ForgotPassword";
 
+// import toast
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
+import SecuredRoute from "./components/SecuredRoute";
+import AppAccount from "./pages/app-account/index";
+
 function App() {
-    document.body.className ="app"
+    document.body.className = "app";
     return (
-        <Switch>
-            <Route exact path="/" component={Login} />
-            <Route path="/create-account" component={CreateAccount} />
-            <Route path="/forgot-password" component={ForgotPassword} />
-            <Route component={NotFound} />
-        </Switch>
+        <>
+            <Switch>
+                <Route exact path="/" component={Login} />
+                <Route path="/create-account" component={CreateAccount} />
+                <Route path="/forgot-password" component={ForgotPassword} />
+                <SecuredRoute path="/app" component={AppAccount} />
+                <Route component={NotFound} />
+            </Switch>
+            <ToastContainer position="top-center" />
+        </>
     );
 }
 
