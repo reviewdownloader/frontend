@@ -1,3 +1,11 @@
 .input:focus, .button:focus {
     box-shadow: 0 0 0 1.5px #1b56f2;
 }
+
+.text-theme-1 {
+    color: #1b56f2 !important;
+}
+
+.bg-theme-1 {
+    background: #1b56f2 !important;
+}
