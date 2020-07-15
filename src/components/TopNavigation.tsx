@@ -21,13 +21,13 @@ const TopNavigation = () => {
                     </a>
 
                     <div className="-intro-x breadcrumb breadcrumb--light mr-auto">
-                        <a href="/app" className="">
-                            Application
-                        </a>
+                        <NavLink to="/app" className="">
+                       {t("home.caption")}
+                        </NavLink>
                         <ChevronRight size={18} />
-                        <a href="/app" className="breadcrumb--active">
-                            {t("home.caption")}
-                        </a>
+                        <NavLink to={{pathname: `/app/profile`}} className="breadcrumb--active">
+                            {user.firstname} {user.lastname}
+                        </NavLink>
                     </div>
                     <div className="intro-x relative mr-3 sm:mr-6">
                         <LanguageChanger />

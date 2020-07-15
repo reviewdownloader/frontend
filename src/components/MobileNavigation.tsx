@@ -69,15 +69,6 @@ const MobileNavigation = () => {
                         <div className="menu__title"> {t("profile")} </div>
                     </NavLink>
                 </li>
-                <li>
-                    <NavLink exact to="/app/setting" className="menu">
-                        <div className="menu__icon">
-                            <Settings size={18} />
-                        </div>
-                        <div className="menu__title"> {t("setting")} </div>
-                    </NavLink>
-                </li>
-
                 <li className="menu__devider my-6"></li>
                 <li>
                     <NavLink exact to="/app/investment-approval" className="menu">
