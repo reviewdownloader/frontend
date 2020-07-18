@@ -8,8 +8,9 @@ import TopNavigation from "../../components/TopNavigation";
 import { Switch, Route } from "react-router-dom";
 import Dashboard from "./Dashboard";
 import YourInvestment from "./YourInvestment";
-import YourReferral from './Referrals/index';
-import Profile from './Profile/index';
+import YourReferral from "./Referrals/index";
+import Profile from "./Profile/index";
+import InvestmentHistory from "./YourInvestment/History";
 
 const AppAccount = () => {
     // Update css class name
@@ -29,7 +30,8 @@ const AppAccount = () => {
                     <Route exact path="/app" component={Dashboard} />
                     <Route exact path="/app/user-investment" component={YourInvestment} />
                     <Route exact path="/app/referral" component={YourReferral} />
-                    <Route  path="/app/profile" component={Profile} />
+                    <Route path="/app/profile" component={Profile} />
+                    <Route path="/app/investment-history/:id" component={InvestmentHistory} />
                 </Switch>
             </div>
         </>

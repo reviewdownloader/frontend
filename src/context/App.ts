@@ -39,3 +39,10 @@ export const CleanDate = (date: string, onlyDate = false, short = true) =>
               weekday: short ? "short" : "long",
               day: "numeric",
           }).format(new Date(date));
+
+export const toCurrency = (value: any): string => {
+    if (value) {
+        return Intl.NumberFormat("en-US").format(value);
+    }
+    return "";
+};

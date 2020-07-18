@@ -63,7 +63,7 @@
     "plan.title": "Current Plan",
     "pay.text": "Make Payment",
     "investment.payment": "Investment Payment",
-    "investment.instruction": "Make a transfer of the amount invested in bitcoin to the wallet address below. After making the payment, click on the continue button",
+
     "pay.done": "Continue",
     "reinvestment": "Reinvest",
     "approval.status": "Waiting Approval",
@@ -187,7 +187,7 @@
     "login_title_2": "sign in to your account.",
     "login_title_desc": "Manage all your investment in one place",
     "login_desc": "A few more clicks to sign in to your account. Manage all your investment in one place",
-    "sign_up_title_2" :"sign up to your account",
+    "sign_up_title_2": "sign up to your account",
     "btn-register": "Register",
 
     "terms_intro": "By signing up, you agree to our",
@@ -205,5 +205,8 @@
     "change_image": "Update Profile Picture",
     "edit_image": "Change Picture",
     "save_changes": "Save Changes",
-    "password_mismatch": "Password do not match!"
+    "password_mismatch": "Password do not match!",
+    "btn.cancel": "Cancel",
+    "confirm.text": " This process cannot be undone.",
+    "investment.instruction": "Make a transfer of the amount invested in bitcoin to the wallet address below. After making the payment, enter the transaction's wallet address and click on the continue button"
 }

@@ -30,7 +30,7 @@ const Profile = () => {
                     <div className="intro-y box mt-5">
                         <div className="relative flex items-center p-5">
                             <div className="w-12 h-12 image-fit">
-                                <img alt={user.firstname} className="rounded-full" src={user.image || "/dist/images/profile-11.jpg"} />
+                                <img alt={user.firstname} className="rounded-full zoom-in" src={user.image || "/dist/images/profile-11.jpg"} />
                             </div>
                             <div className="ml-4 mr-auto">
                                 <div className="font-medium text-base">
