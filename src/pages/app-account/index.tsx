@@ -11,6 +11,8 @@ import YourInvestment from "./YourInvestment";
 import YourReferral from "./Referrals/index";
 import Profile from "./Profile/index";
 import InvestmentHistory from "./YourInvestment/History";
+import Plan from "./Management/Plan";
+
 
 const AppAccount = () => {
     // Update css class name
@@ -32,6 +34,7 @@ const AppAccount = () => {
                     <Route exact path="/app/referral" component={YourReferral} />
                     <Route path="/app/profile" component={Profile} />
                     <Route path="/app/investment-history/:id" component={InvestmentHistory} />
+                    <Route path="/app/plan" component={Plan} />
                 </Switch>
             </div>
         </>

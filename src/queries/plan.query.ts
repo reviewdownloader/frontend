@@ -22,3 +22,26 @@ export const GET_PLANS = gql`
     }
     ${PLAN_PROP}
 `;
+
+export const CREATE_PLAN = gql`
+    mutation NewPlan($model: PlanInput!) {
+        NewPlan(model: $model) {
+            message
+        }
+    }
+`;
+
+export const UPDATE_PLAN = gql`
+    mutation UpdatePlan($id: ID!, $update: PlanInput!) {
+        UpdatePlan(id: $id, update: $update) {
+            message
+        }
+    }
+`;
+export const DELETE_PLAN = gql`
+    mutation DeletePlan($id: ID!) {
+        DeletePlan(id: $id) {
+            message
+        }
+    }
+`;
