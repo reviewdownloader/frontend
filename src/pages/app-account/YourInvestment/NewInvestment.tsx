@@ -66,7 +66,10 @@ const NewInvestment: FC<iProp> = ({ onCancel }) => {
                                     onChange={({ currentTarget: { value } }) => {
                                         if (parseInt(value) !== -1) {
                                             const _item = planDoc.GetPlans.docs[value];
-                                            if (_item) setPlan(_item);
+                                            if (_item) {
+                                                setPlan(_item);
+                                                setAmount(_item.amount);
+                                            }
                                         }
                                     }}
                                     required

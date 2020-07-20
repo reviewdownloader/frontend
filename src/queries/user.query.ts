@@ -92,3 +92,16 @@ export const UPDATE_EMAIL = gql`
         }
     }
 `;
+
+export const NEW_ACCOUNT = gql`
+    mutation NewAccount($model: UserInput!, $option: OptionInput!, $referral: String) {
+        NewUserAccount(model: $model, option: $option, referrer: $referral) {
+            message
+            doc {
+                ...UserProps
+            }
+            token
+        }
+    }
+    ${USER_PROP}
+`;
