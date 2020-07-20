@@ -127,3 +127,16 @@ export const GET_USERS = gql`
     }
     ${USER_PROP}
 `;
+
+export const GET_SINGLE = gql`
+    query GetUser($id: ID!) {
+        GetUser(id: $id) {
+            doc {
+                ...UserProps
+                referralCode
+            }
+        }
+        
+    }
+    ${USER_PROP}
+`;

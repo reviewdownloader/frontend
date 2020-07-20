@@ -13,6 +13,7 @@ import Profile from "./Profile/index";
 import InvestmentHistory from "./YourInvestment/History";
 import Plan from "./Management/Plan";
 import UserManagement from './User/index';
+import UserProfile from './User/Profile';
 
 
 const AppAccount = () => {
@@ -37,6 +38,7 @@ const AppAccount = () => {
                     <Route path="/app/investment-history/:id" component={InvestmentHistory} />
                     <Route path="/app/plan" component={Plan} />
                     <Route path="/app/users" component={UserManagement} />
+                    <Route path="/app/user/:id" component={UserProfile} />
                 </Switch>
             </div>
         </>
