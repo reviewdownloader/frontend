@@ -105,3 +105,8 @@ export const NEW_ACCOUNT = gql`
     }
     ${USER_PROP}
 `;
+export const PASSWORD_RESET = gql`
+    mutation ResetPassword($email: String!) {
+        ResetPassword(email: $email)
+    }
+`;

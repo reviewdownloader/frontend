@@ -281,7 +281,7 @@ const CreateAccount: FC<iProp> = ({ history, location }) => {
                                             .
                                         </div>
                                         <div className="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                                            <PrimaryButton type={ButtonType.submit} loading={false} className="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
+                                            <PrimaryButton type={ButtonType.submit} loading={loading} className="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
                                                 {t("btn-register")} <UserPlus className="ml-3 h-6" />
                                             </PrimaryButton>
                                             <button type="button" onClick={() => setStep(1)} className="button button--lg w-full xl:w-32 text-gray-700 border border-gray-300 mt-3 xl:mt-0">
@@ -300,7 +300,6 @@ const CreateAccount: FC<iProp> = ({ history, location }) => {
                                         </button>
                                     </div>
                                 )}
-                                <LoadingIcon loading={loading} />
                             </form>
                         </div>
                     </div>

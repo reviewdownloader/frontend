@@ -1,9 +1,13 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Helmet } from "react-helmet";
 import { AppName } from "../context/App";
 import PrimaryButton, { ButtonType } from "../components/Button";
 import { ArrowRight, ArrowLeft } from "@styled-icons/feather";
 import { useTranslation } from "react-i18next";
+import { useMutation } from "@apollo/react-hooks";
+import { toast } from "react-toastify";
+import { CleanMessage } from "./../context/App";
+import { PASSWORD_RESET } from "../queries/user.query";
 
 interface iProp {
     history?: any;
@@ -12,6 +16,16 @@ interface iProp {
 const ForgotPassword: FC<iProp> = ({ history }) => {
     document.body.className = "login";
     const { t } = useTranslation();
+    const [email, setEmail] = useState("");
+
+    const [resetFunc, { loading }] = useMutation(PASSWORD_RESET, {
+        onError: (er) => toast.error(CleanMessage(er.message)),
+        onCompleted: (data) => {
+            if (data.ResetPassword) {
+                toast.success(data.ResetPassword);
+            }
+        },
+    });
 
     return (
         <>
@@ -46,19 +60,31 @@ const ForgotPassword: FC<iProp> = ({ history }) => {
                             <h2 className="intro-x font-bold text-2xl xl:text-3xl text-center xl:text-left">{t("forgot.password.caption")}</h2>
                             <div className="intro-x mt-2 text-gray-500 xl:hidden text-center">{t("login_desc")}</div>
                             <form
-                                onSubmit={(event) => {
+                                onSubmit={async (event) => {
                                     event.preventDefault();
+                                    await resetFunc({
+                                        variables: {
+                                            email,
+                                        },
+                                    });
                                 }}
                             >
                                 <div className="intro-x mt-8">
                                     <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
                                         {t("email.label")}
                                     </label>
-                                    <input type="email" id="email" className="intro-x login__input input input--lg border border-gray-300 block" placeholder={t("email.placeholder")} />
+                                    <input
+                                        defaultValue={email}
+                                        onChange={({ currentTarget: { value, validity } }) => validity.valid && setEmail(value)}
+                                        type="email"
+                                        id="email"
+                                        className="intro-x login__input input input--lg border border-gray-300 block"
+                                        placeholder={t("email.placeholder")}
+                                    />
                                 </div>
 
                                 <div className="intro-x mt-5 xl:mt-8 text-center xl:text-left">
-                                    <PrimaryButton type={ButtonType.submit} loading={false} className="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
+                                    <PrimaryButton type={ButtonType.submit} loading={loading} className="button button--lg w-full xl:w-32 text-white bg-theme-1 xl:mr-3">
                                         {t("submit.text")} <ArrowRight size={18} />
                                     </PrimaryButton>
 
