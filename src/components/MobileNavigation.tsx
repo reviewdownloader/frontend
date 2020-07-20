@@ -113,7 +113,7 @@ const MobileNavigation = () => {
                     </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/app/load-investment" className="menu">
+                    <NavLink to="/app/users" className="menu">
                         <div className="menu__icon">
                             <Users size={18} />
                         </div>

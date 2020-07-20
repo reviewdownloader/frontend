@@ -110,3 +110,20 @@ export const PASSWORD_RESET = gql`
         ResetPassword(email: $email)
     }
 `;
+
+export const GET_USERS = gql`
+    query GetUsers($page: Int, $limit: Int, $nationality: ID, $user: String) {
+        GetUsers(page: $page, limit: $limit, nationality: $nationality, user: $user) {
+            docs {
+                ...UserProps
+            }
+            totalDocs
+            totalPages
+            page
+            limit
+            nextPage
+            prevPage
+        }
+    }
+    ${USER_PROP}
+`;

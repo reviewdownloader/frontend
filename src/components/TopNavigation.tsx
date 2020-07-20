@@ -136,7 +136,7 @@ const TopNavigation = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/app/load-investment" className="top-menu">
+                                <NavLink to="/app/users" className="top-menu">
                                     <div className="top-menu__icon">
                                         <Users size={18} />
                                     </div>

@@ -38,8 +38,8 @@ const UserItems: FC<props> = ({ items }) => {
                                     <div className="text-gray-600 text-xs">{user.phone}</div>
                                 </div>
                                 <div className="flex mt-4 lg:mt-0">
-                                    <NavLink to={{ pathname: `/app/user/${user.id}` }} className="button w-24 rounded-full mr-1 mb-2 bg-theme-14 text-theme-10">
-                                        Profile <ArrowRight size={18} />
+                                    <NavLink to={{ pathname: `/app/user/${user.id}` }} className="button w-38 rounded-full mr-1 mb-2 bg-theme-14 text-theme-10">
+                                        <span>Profile</span> <ArrowRight className="h-6 ml-1" />
                                     </NavLink>
                                 </div>
                             </div>
