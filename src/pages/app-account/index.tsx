@@ -1,7 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import { AppName } from "../../context/App";
-// import { authService } from "../../services/Authentication.Service";
 import { useTranslation } from "react-i18next";
 import MobileNavigation from "../../components/MobileNavigation";
 import TopNavigation from "../../components/TopNavigation";
@@ -17,11 +16,13 @@ import UserProfile from "./User/Profile";
 import LoadInvestment from "./Management/LoadInvestment/index";
 import AdminRoute from "../../components/AdminRoute";
 import Payout from "./AdminCorner/Payout/index";
+import InvestmentApproval from "./AdminCorner/InvestmentApproval/index";
 
 const AppAccount = () => {
     // Update css class name
     document.body.className = "app";
     const { t } = useTranslation();
+
     return (
         <>
             <Helmet>
@@ -43,6 +44,7 @@ const AppAccount = () => {
                     <Route path="/app/user/:id" component={UserProfile} />
                     <AdminRoute path="/app/load-investment" component={LoadInvestment} />
                     <AdminRoute path="/app/payout" component={Payout} />
+                    <AdminRoute path="/app/investment-approval" component={InvestmentApproval} />
                 </Switch>
             </div>
         </>

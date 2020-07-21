@@ -19,6 +19,7 @@ const INVESTMENT_PROP = gql`
         plan {
             ...PlanProp
         }
+        walletAddress
         compounded {
             status
             payout
@@ -115,4 +116,52 @@ export const LOAD_INVESTMENT = gql`
             message
         }
     }
+`;
+
+export const ACCEPT_INVESTMENT = gql`
+    mutation ApproveInvestment($id: ID!, $nextFund: String!) {
+        ApproveInvestment(id: $id, nextFund: $nextFund) {
+            message
+            doc {
+                id
+            }
+        }
+    }
+`;
+
+export const DECLINE_INVESTMENT = gql`
+    mutation DeclineInvestment($id: ID!) {
+        DeclineInvestment(id: $id) {
+            message
+            doc {
+                id
+            }
+        }
+    }
+`;
+
+export const INVESTMENT_APPROVAL = gql`
+    query GetInvestmentsForApproval($page: Int, $limit: Int) {
+        GetInvestmentsForApproval(page: $page, limit: $limit) {
+            message
+            docs {
+                ...InvestmentProp
+                user {
+                    firstname
+                    lastname
+                    email
+                    nationality
+                    image
+                    gender
+                }
+            }
+            page
+            limit
+            totalDocs
+            totalPages
+            nextPage
+            prevPage
+        }
+    }
+    ${INVESTMENT_PROP}
 `;

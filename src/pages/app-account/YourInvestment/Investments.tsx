@@ -70,7 +70,13 @@ const Investments: FC<iProp> = ({ items }) => {
                                     {t("approval.done")}
                                 </div>
                             )}
-                            {item.paid && !item.approved && !item.closed && (
+                            {item.paid && !item.approved && !item.closed && item.declined && (
+                                <div className="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-6 text-white">
+                                    <CloseCircle className="w-6 h-6 mr-2" />
+                                    Investment Declined
+                                </div>
+                            )}
+                            {item.paid && !item.approved && !item.closed && !item.declined && (
                                 <div className="rounded-md flex items-center px-5 py-4 mb-2 bg-theme-1 text-white">
                                     <GitCommit className="w-6 h-6 mr-2" />
                                     {t("approval.status")}
