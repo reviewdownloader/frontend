@@ -170,9 +170,13 @@ const UserProfile: FC<iProp> = ({ match, history }) => {
                                     <a href="javascript:;" data-toggle="modal" data-target="#delete-box" className="button w-full mr-2 mb-2 flex items-center justify-center bg-theme-6 text-white">
                                         <Trash className="w-4 h-4 mr-2" /> Delete Account
                                     </a>
-                                    <button className="button w-full mr-2 mb-2 flex items-center justify-center bg-theme-9 text-white">
+                                    <NavLink
+                                        to="/app/load-investment"
+                                        onClick={() => localStorage.setItem("load", user.email)}
+                                        className="button w-full mr-2 mb-2 flex items-center justify-center bg-theme-9 text-white"
+                                    >
                                         <Copy className="w-4 h-4 mr-2" /> Load Investment
-                                    </button>
+                                    </NavLink>
                                     <button onClick={() => history.goBack()} className="button w-full mr-2 mb-2 flex items-center justify-center border-theme-1 text-theme-1 mt-5">
                                         <ArrowBack className="w-4 h-4 mr-2" /> Go Back
                                     </button>

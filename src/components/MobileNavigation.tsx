@@ -3,6 +3,7 @@ import { BarChart2, Home, CreditCard, Users, User, Settings, CheckCircle, Shoppi
 import $ from "jquery";
 import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { authService } from "./../services/Authentication.Service";
 
 const MobileNavigation = () => {
     useEffect(() => {
@@ -23,9 +24,11 @@ const MobileNavigation = () => {
                     $(".mobile-menu").find("ul").first().slideDown();
                 }
             });
-    },[]);
+    }, []);
 
     const { t } = useTranslation();
+
+    const { admin } = authService.GetUser();
     return (
         <div className="mobile-menu md:hidden">
             <div className="mobile-menu-bar">
@@ -69,57 +72,61 @@ const MobileNavigation = () => {
                         <div className="menu__title"> {t("profile")} </div>
                     </NavLink>
                 </li>
-                <li className="menu__devider my-6"></li>
-                <li>
-                    <NavLink exact to="/app/investment-approval" className="menu">
-                        <div className="menu__icon">
-                            <CheckCircle size={18} />
-                        </div>
-                        <div className="menu__title"> Investment Approval </div>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink exact to="/app/active-investment" className="menu">
-                        <div className="menu__icon">
-                            <ShoppingBag size={18} />
-                        </div>
-                        <div className="menu__title"> Active Investment </div>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink exact to="/app/referral" className="menu">
-                        <div className="menu__icon">
-                            <CreditCard size={18} />
-                        </div>
-                        <div className="menu__title"> Referral Bonus</div>
-                    </NavLink>
-                </li>
-                <li className="menu__devider my-6"></li>
-                <li>
-                    <NavLink to="/app/plan" className="menu">
-                        <div className="menu__icon">
-                            <Activity size={18} />
-                        </div>
-                        <div className="menu__title">Plan Management </div>
-                    </NavLink>
-                </li>
+                {admin && (
+                    <>
+                        <li className="menu__devider my-6"></li>
+                        <li>
+                            <NavLink exact to="/app/investment-approval" className="menu">
+                                <div className="menu__icon">
+                                    <CheckCircle size={18} />
+                                </div>
+                                <div className="menu__title"> Investment Approval </div>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink exact to="/app/active-investment" className="menu">
+                                <div className="menu__icon">
+                                    <ShoppingBag size={18} />
+                                </div>
+                                <div className="menu__title"> Active Investment </div>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink exact to="/app/referral" className="menu">
+                                <div className="menu__icon">
+                                    <CreditCard size={18} />
+                                </div>
+                                <div className="menu__title"> Referral Bonus</div>
+                            </NavLink>
+                        </li>
+                        <li className="menu__devider my-6"></li>
+                        <li>
+                            <NavLink to="/app/plan" className="menu">
+                                <div className="menu__icon">
+                                    <Activity size={18} />
+                                </div>
+                                <div className="menu__title">Plan Management </div>
+                            </NavLink>
+                        </li>
 
-                <li>
-                    <NavLink to="/app/load-investment" className="menu">
-                        <div className="menu__icon">
-                            <CreditCard size={18} />
-                        </div>
-                        <div className="menu__title">Load Investment </div>
-                    </NavLink>
-                </li>
-                <li>
-                    <NavLink to="/app/users" className="menu">
-                        <div className="menu__icon">
-                            <Users size={18} />
-                        </div>
-                        <div className="menu__title">User Management</div>
-                    </NavLink>
-                </li>
+                        <li>
+                            <NavLink to="/app/load-investment" className="menu">
+                                <div className="menu__icon">
+                                    <CreditCard size={18} />
+                                </div>
+                                <div className="menu__title">Load Investment </div>
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="/app/users" className="menu">
+                                <div className="menu__icon">
+                                    <Users size={18} />
+                                </div>
+                                <div className="menu__title">User Management</div>
+                            </NavLink>
+                        </li>
+                    </>
+                )}
             </ul>
         </div>
     );

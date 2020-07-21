@@ -14,13 +14,15 @@ const AdminRoute: React.FC<IProp> = ({ component: Component, ...rest }) => (
             authService.IsAuthenticated() && authService.GetUser().admin ? (
                 <Component {...props} />
             ) : (
-                <Redirect
-                    to={{
-                        pathname: "/login",
-                        state: { from: props.location },
-                        search: `?redirect=${props.location.pathname}`,
-                    }}
-                />
+                authService.Logout() && (
+                    <Redirect
+                        to={{
+                            pathname: "/",
+                            state: { from: props.location },
+                            search: `?redirect=${props.location.pathname}`,
+                        }}
+                    />
+                )
             )
         }
     />

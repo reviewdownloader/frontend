@@ -14,6 +14,8 @@ import InvestmentHistory from "./YourInvestment/History";
 import Plan from "./Management/Plan";
 import UserManagement from './User/index';
 import UserProfile from './User/Profile';
+import LoadInvestment from './Management/LoadInvestment/index';
+import AdminRoute from "../../components/AdminRoute";
 
 
 const AppAccount = () => {
@@ -36,9 +38,10 @@ const AppAccount = () => {
                     <Route exact path="/app/referral" component={YourReferral} />
                     <Route path="/app/profile" component={Profile} />
                     <Route path="/app/investment-history/:id" component={InvestmentHistory} />
-                    <Route path="/app/plan" component={Plan} />
-                    <Route path="/app/users" component={UserManagement} />
+                    <AdminRoute path="/app/plan" component={Plan} />
+                    <AdminRoute path="/app/users" component={UserManagement} />
                     <Route path="/app/user/:id" component={UserProfile} />
+                    <AdminRoute path="/app/load-investment" component={LoadInvestment} />
                 </Switch>
             </div>
         </>

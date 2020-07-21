@@ -141,6 +141,22 @@ export const GET_SINGLE = gql`
     }
     ${USER_PROP}
 `;
+
+export const GET_SINGLE_EMAIL = gql`
+    query GetUserByEmail($email: String!) {
+        GetUserByEmail(email: $email) {
+            doc {
+                id
+                firstname
+                lastname
+                email
+                phone
+                image
+            }
+        }
+    }
+`;
+
 export const REMOVE_USER = gql`
     mutation DeleteAccount($id: ID!) {
         DeleteAccount(id: $id) {

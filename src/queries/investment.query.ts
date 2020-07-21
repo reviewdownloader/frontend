@@ -109,3 +109,10 @@ export const COMPOUND_INVESTMENT = gql`
         }
     }
 `;
+export const LOAD_INVESTMENT = gql`
+    mutation LoadInvestment($model: NewInvestmentInput!) {
+        NewInvestmentByAdmin(model: $model) {
+            message
+        }
+    }
+`;

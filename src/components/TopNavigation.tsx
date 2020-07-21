@@ -22,10 +22,10 @@ const TopNavigation = () => {
 
                     <div className="-intro-x breadcrumb breadcrumb--light mr-auto">
                         <NavLink to="/app" className="">
-                       {t("home.caption")}
+                            {t("home.caption")}
                         </NavLink>
                         <ChevronRight size={18} />
-                        <NavLink to={{pathname: `/app/profile`}} className="breadcrumb--active">
+                        <NavLink to={{ pathname: `/app/profile` }} className="breadcrumb--active">
                             {user.firstname} {user.lastname}
                         </NavLink>
                     </div>
@@ -108,87 +108,91 @@ const TopNavigation = () => {
                             <div className="top-menu__title"> {t("profile")} </div>
                         </NavLink>
                     </li>
-                    <li>
-                        <a href="javascript:;" className="top-menu">
-                            <div className="top-menu__icon">
-                                <Database size={18} />
-                            </div>
-                            <div className="top-menu__title">
-                                Management <ChevronDown size={18} />
-                            </div>
-                        </a>
-                        <ul className="">
+                    {user.admin && (
+                        <>
                             <li>
-                                <NavLink to="/app/plan" className="top-menu">
+                                <a href="javascript:;" className="top-menu">
                                     <div className="top-menu__icon">
-                                        <Activity size={18} />
+                                        <Database size={18} />
                                     </div>
-                                    <div className="top-menu__title">Plan Management </div>
-                                </NavLink>
-                            </li>
+                                    <div className="top-menu__title">
+                                        Management <ChevronDown size={18} />
+                                    </div>
+                                </a>
+                                <ul className="">
+                                    <li>
+                                        <NavLink to="/app/plan" className="top-menu">
+                                            <div className="top-menu__icon">
+                                                <Activity size={18} />
+                                            </div>
+                                            <div className="top-menu__title">Plan Management </div>
+                                        </NavLink>
+                                    </li>
 
-                            <li>
-                                <NavLink to="/app/load-investment" className="top-menu">
-                                    <div className="top-menu__icon">
-                                        <CreditCard size={18} />
-                                    </div>
-                                    <div className="top-menu__title">Load Investment </div>
-                                </NavLink>
+                                    <li>
+                                        <NavLink to="/app/load-investment" className="top-menu">
+                                            <div className="top-menu__icon">
+                                                <CreditCard size={18} />
+                                            </div>
+                                            <div className="top-menu__title">Load Investment </div>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to="/app/users" className="top-menu">
+                                            <div className="top-menu__icon">
+                                                <Users size={18} />
+                                            </div>
+                                            <div className="top-menu__title">User Management</div>
+                                        </NavLink>
+                                    </li>
+                                </ul>
                             </li>
                             <li>
-                                <NavLink to="/app/users" className="top-menu">
+                                <a href="javascript:;" className="top-menu">
                                     <div className="top-menu__icon">
-                                        <Users size={18} />
+                                        <Box size={18} />
                                     </div>
-                                    <div className="top-menu__title">User Management</div>
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:;" className="top-menu">
-                            <div className="top-menu__icon">
-                                <Box size={18} />
-                            </div>
-                            <div className="top-menu__title">
-                                Admin Corner <ChevronDown size={18} />
-                            </div>
-                        </a>
-                        <ul className="">
-                            <li>
-                                <NavLink exact to="/app/payout" className="top-menu">
-                                    <div className="top-menu__icon">
-                                        <ShoppingBag size={18} />
+                                    <div className="top-menu__title">
+                                        Admin Corner <ChevronDown size={18} />
                                     </div>
-                                    <div className="top-menu__title">Payout </div>
-                                </NavLink>
+                                </a>
+                                <ul className="">
+                                    <li>
+                                        <NavLink exact to="/app/payout" className="top-menu">
+                                            <div className="top-menu__icon">
+                                                <ShoppingBag size={18} />
+                                            </div>
+                                            <div className="top-menu__title">Payout </div>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink exact to="/app/investment-approval" className="top-menu">
+                                            <div className="top-menu__icon">
+                                                <CheckCircle size={18} />
+                                            </div>
+                                            <div className="top-menu__title"> Investment Approval </div>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink exact to="/app/active-investment" className="top-menu">
+                                            <div className="top-menu__icon">
+                                                <Columns size={18} />
+                                            </div>
+                                            <div className="top-menu__title"> Active Investment </div>
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink exact to="/app/active-investment" className="top-menu">
+                                            <div className="top-menu__icon">
+                                                <Users size={18} />
+                                            </div>
+                                            <div className="top-menu__title">Referral Bonus</div>
+                                        </NavLink>
+                                    </li>
+                                </ul>
                             </li>
-                            <li>
-                                <NavLink exact to="/app/investment-approval" className="top-menu">
-                                    <div className="top-menu__icon">
-                                        <CheckCircle size={18} />
-                                    </div>
-                                    <div className="top-menu__title"> Investment Approval </div>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink exact to="/app/active-investment" className="top-menu">
-                                    <div className="top-menu__icon">
-                                        <Columns size={18} />
-                                    </div>
-                                    <div className="top-menu__title"> Active Investment </div>
-                                </NavLink>
-                            </li>
-                            <li>
-                                <NavLink exact to="/app/active-investment" className="top-menu">
-                                    <div className="top-menu__icon">
-                                        <Users size={18} />
-                                    </div>
-                                    <div className="top-menu__title">Referral Bonus</div>
-                                </NavLink>
-                            </li>
-                        </ul>
-                    </li>
+                        </>
+                    )}
                 </ul>
             </nav>
         </>
