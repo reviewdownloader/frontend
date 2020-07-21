@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AppName } from "../../../context/App";
 import { Helmet } from "react-helmet";
 import { useQuery } from "@apollo/react-hooks";
@@ -29,6 +29,17 @@ const UserManagement = () => {
             user,
         },
     });
+
+    useEffect(() => {
+        fetchMore({
+            variables: { page, limit, user, nationality },
+            updateQuery: (prev, { fetchMoreResult }) => {
+                if (!fetchMoreResult) return prev;
+                return { GetUsers: fetchMoreResult.GetUsers };
+            },
+        });
+    }, [page, limit, fetchMore]);
+
     return (
         <>
             <Helmet>
@@ -58,23 +69,25 @@ const UserManagement = () => {
                         }))}
                     /> */}
 
-                    <button
-                        onClick={async () => {
-                            setPage(1);
-                            setUser(null);
-                            await refetch({
-                                page,
-                                limit,
-                                nationality: null,
-                                user: null,
-                            });
-                        }}
-                        className="button px-2 box mt-4 text-gray-700"
-                    >
-                        <span className="w-5 h-5 flex items-center justify-center">
-                            <Refresh className="w-4 h-4" />
-                        </span>
-                    </button>
+                    {(user || nationality) && (
+                        <button
+                            onClick={async () => {
+                                setPage(1);
+                                setUser(null);
+                                await refetch({
+                                    page,
+                                    limit,
+                                    nationality: null,
+                                    user: null,
+                                });
+                            }}
+                            className="intro-y button px-2 box mt-4 text-gray-700"
+                        >
+                            <span className="w-5 h-5 flex items-center justify-center">
+                                <Refresh className="w-4 h-4" />
+                            </span>
+                        </button>
+                    )}
                     {data && <PaginationSummary {...data.GetUsers} length={data.GetUsers.docs.length} />}
                     <div className="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto md:ml-0">
                         <form
@@ -103,7 +116,7 @@ const UserManagement = () => {
                 </div>
             </div>
             {data && <UserItems items={data.GetUsers.docs} />}
-            <div className="mt-5 intro-y">{data && <PageNumber {...data.GetUsers} length={data.GetUsers.docs.length} />}</div>
+            <div className="mt-5 intro-y">{data && <PageNumber onPageClicked={(page: number) => setPage(page)} {...data.GetUsers} length={data.GetUsers.docs.length} />}</div>
         </>
     );
 };

@@ -1,24 +1,25 @@
 import React, { FC, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { AppName, CleanDate } from "../../../context/App";
 import { User } from "./../../../model/user.model";
-import { Mail, Call, Planet, Person, Copy, ArrowBack } from "@styled-icons/ionicons-outline";
+import { Mail, Call, Planet, Person, Copy, ArrowBack, Trash } from "@styled-icons/ionicons-outline";
 import { useTranslation } from "react-i18next";
-import { useQuery } from "@apollo/react-hooks";
+import { useQuery, useMutation } from "@apollo/react-hooks";
 import { toast } from "react-toastify";
 import { CleanMessage } from "./../../../context/App";
-import { GET_SINGLE } from "../../../queries/user.query";
+import { GET_SINGLE, REMOVE_USER } from "../../../queries/user.query";
 import { LoadingIcon } from "./../../../components/Button/index";
-import { Trash } from "@styled-icons/feather";
+import { UserX } from "@styled-icons/feather";
 import { authService } from "./../../../services/Authentication.Service";
+import { setTimeout } from "timers";
 
 interface iProp {
     match?: any;
     history?: any;
 }
 
-const UserProfile: FC<iProp> = ({ match }) => {
+const UserProfile: FC<iProp> = ({ match, history }) => {
     const { id } = match.params;
     const [user, setUser] = useState<User>();
     const [stats, setStats] = useState({
@@ -34,6 +35,17 @@ const UserProfile: FC<iProp> = ({ match }) => {
             setStats({ ...stats, investment: d.CountInvestment, referral: d.CountReferral });
         },
         variables: { id },
+    });
+
+    //   Remove user
+    const [deleteFunc, { loading: deleteLoading }] = useMutation(REMOVE_USER, {
+        onError: (e) => toast.error(CleanMessage(e.message)),
+        onCompleted: (d) => {
+            toast.success(d.DeleteAccount.message);
+            setTimeout(() => {
+                document.location.href = "/app/users";
+            }, 500);
+        },
     });
 
     const { admin } = authService.GetUser();
@@ -114,11 +126,7 @@ const UserProfile: FC<iProp> = ({ match }) => {
                                         <div className="text-gray-700 mr-5 sm:mr-5">{CleanDate(user.dob, true, false)}</div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div className="intro-y box col-span-12 lg:col-span-4">
-                            <div className="p-5">
-                                <div className="relative flex items-center">
+                                <div className="relative flex items-center mt-5">
                                     <div className="ml-4 mr-auto">
                                         <span className="font-medium">{t("date.joining")}</span>
                                         <div className="text-gray-700 mr-5 sm:mr-5">{CleanDate(user.created_at, true)}</div>
@@ -126,21 +134,79 @@ const UserProfile: FC<iProp> = ({ match }) => {
                                 </div>
                             </div>
                         </div>
+                        <div className="intro-y box col-span-12 lg:col-span-4">
+                            <div className="p-5">
+                                <h4 className="font-medium">{t("general.referral")}</h4>
+                                <div className="intro-y col-span-12 md:col-span-6">
+                                    {user.referred.map((u, i) => (
+                                        <div key={i} className="flex flex-col lg:flex-row items-center p-3">
+                                            <div className="w-24 h-24 lg:w-12 lg:h-12 image-fit lg:mr-1">
+                                                <img alt={u.firstname} className="rounded-full" src={u.image || "/dist/images/profile-5.jpg"} />
+                                            </div>
+                                            <div className="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
+                                                <NavLink to={{ pathname: `/app/user/${u.id}` }} className="font-medium">
+                                                    {u.firstname} {u.lastname}
+                                                </NavLink>
+                                                <div className="text-gray-600 text-xs">{u.email}</div>
+                                            </div>
+                                            <div className="flex mt-4 lg:mt-0">
+                                                <NavLink to={{ pathname: `/app/user/${u.id}` }} className="button button--sm text-theme-1 border border-theme-1">
+                                                    Profile
+                                                </NavLink>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                                {user.referred.length === 0 && (
+                                    <div className="intro-y col-span-12 md:col-span-6 text-center">
+                                        <h6 className="font-medium mt-16">{t("referral.message")}</h6>
+                                    </div>
+                                )}
+                            </div>
+                        </div>
                         {admin && (
                             <div className="intro-y col-span-12 lg:col-span-2">
                                 <div className="p-5">
-                                    <button className="button w-full mr-2 mb-2 flex items-center justify-center bg-theme-6 text-white">
+                                    <a href="javascript:;" data-toggle="modal" data-target="#delete-box" className="button w-full mr-2 mb-2 flex items-center justify-center bg-theme-6 text-white">
                                         <Trash className="w-4 h-4 mr-2" /> Delete Account
-                                    </button>
+                                    </a>
                                     <button className="button w-full mr-2 mb-2 flex items-center justify-center bg-theme-9 text-white">
                                         <Copy className="w-4 h-4 mr-2" /> Load Investment
                                     </button>
-                                    <button className="button w-full mr-2 mb-2 flex items-center justify-center border-theme-1 text-theme-1 mt-5">
+                                    <button onClick={() => history.goBack()} className="button w-full mr-2 mb-2 flex items-center justify-center border-theme-1 text-theme-1 mt-5">
                                         <ArrowBack className="w-4 h-4 mr-2" /> Go Back
                                     </button>
                                 </div>
                             </div>
                         )}
+                    </div>
+                    <div className="modal" id="delete-box">
+                        <div className="modal__content">
+                            <div className="p-5 text-center">
+                                <UserX className="w-16 h-16 text-theme-6 mx-auto mt-3" />
+                                <div className="text-3xl mt-5">Delete User? </div>
+                                <div className="text-gray-600 mt-2">Are you sure you want to delete this {user.firstname}?</div>
+                            </div>
+                            <div className="px-5 pb-8 text-center">
+                                <LoadingIcon loading={deleteLoading} />
+                                <button type="button" data-dismiss="modal" className="button w-24 border text-gray-700 mr-1">
+                                    Cancel
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={async () => {
+                                        await deleteFunc({
+                                            variables: {
+                                                id,
+                                            },
+                                        });
+                                    }}
+                                    className="button w-24 bg-theme-6 text-white"
+                                >
+                                    Proceed
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </>
             )}

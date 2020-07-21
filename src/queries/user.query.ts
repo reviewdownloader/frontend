@@ -20,6 +20,8 @@ const USER_PROP = gql`
             id
             firstname
             email
+            image
+            lastname
         }
     }
 `;
@@ -136,7 +138,13 @@ export const GET_SINGLE = gql`
                 referralCode
             }
         }
-        
     }
     ${USER_PROP}
+`;
+export const REMOVE_USER = gql`
+    mutation DeleteAccount($id: ID!) {
+        DeleteAccount(id: $id) {
+            message
+        }
+    }
 `;
