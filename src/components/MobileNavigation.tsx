@@ -92,7 +92,7 @@ const MobileNavigation = () => {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink exact to="/app/referral" className="menu">
+                            <NavLink exact to="/app/ref-bonus" className="menu">
                                 <div className="menu__icon">
                                     <CreditCard size={18} />
                                 </div>

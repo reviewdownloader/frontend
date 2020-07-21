@@ -182,7 +182,7 @@ const TopNavigation = () => {
                                         </NavLink>
                                     </li>
                                     <li>
-                                        <NavLink exact to="/app/active-investment" className="top-menu">
+                                        <NavLink exact to="/app/ref-bonus" className="top-menu">
                                             <div className="top-menu__icon">
                                                 <Users size={18} />
                                             </div>
