@@ -6,7 +6,7 @@ import { DECLINE_INVESTMENT, ACCEPT_INVESTMENT, INVESTMENT_APPROVAL } from "../.
 import PaginationSummary from "../../../../components/Paging/Summary";
 import PageNumber from "../../../../components/Paging/Number";
 import { LoadingIcon } from "../../../../components/Button";
-import { Checkbox, CloseCircle, ArrowForward } from "@styled-icons/ionicons-outline";
+import { Checkbox, CloseCircle, ArrowForward, Albums } from "@styled-icons/ionicons-outline";
 
 const InvestmentApprovalItems = () => {
     const [page, setPage] = useState<number>(1);
@@ -113,22 +113,24 @@ const InvestmentApprovalItems = () => {
             <LoadingIcon loading={loading || dLoading} />
             <div className="grid grid-cols-12 gap-6 mt-5">
                 <div className="intro-y col-span-12 flex flex-wrap sm:flex-no-wrap items-center mt-2">
-                    {data && <PaginationSummary {...data.GetInvestmentsForApproval} length={data.GetInvestmentsForApproval.docs.length} />}
+                    {data && data.GetInvestmentsForApproval.docs.length > 0 && <PaginationSummary {...data.GetInvestmentsForApproval} length={data.GetInvestmentsForApproval.docs.length} />}
                 </div>
             </div>
             <div className="mt-4">
                 <div className="intro-y col-span-12 overflow-auto lg:overflow-visible">
                     <table className="table table-report -mt-2">
                         <thead className="uppercase font-bold">
-                            <tr>
-                                <th className="text-center whitespace-no-wrap">#</th>
-                                <th className="whitespace-no-wrap">Person</th>
-                                <th className="whitespace-no-wrap text-center">Country</th>
-                                <th className="text-center whitespace-no-wrap">investment made</th>
-                                <th className="text-left whitespace-no-wrap">Plan</th>
-                                <th className="text-left whitespace-no-wrap">Investment Date</th>
-                                <th className="whitespace-no-wrap text-center">Actions</th>
-                            </tr>
+                            {data && data.GetInvestmentsForApproval.docs.length > 0 && (
+                                <tr>
+                                    <th className="text-center whitespace-no-wrap">#</th>
+                                    <th className="whitespace-no-wrap">Person</th>
+                                    <th className="whitespace-no-wrap text-center">Country</th>
+                                    <th className="text-center whitespace-no-wrap">investment made</th>
+                                    <th className="text-left whitespace-no-wrap">Plan</th>
+                                    <th className="text-left whitespace-no-wrap">Investment Date</th>
+                                    <th className="whitespace-no-wrap text-center">Actions</th>
+                                </tr>
+                            )}
                         </thead>
                         <tbody>
                             {data &&
@@ -197,8 +199,19 @@ const InvestmentApprovalItems = () => {
                 </div>
             </div>
             <div className="mt-5 intro-x">
-                {data && <PageNumber onPageClicked={(page: number) => setPage(page)} {...data.GetInvestmentsForApproval} length={data.GetInvestmentsForApproval.docs.length} />}
+                {data && data.GetInvestmentsForApproval.docs.length > 0 && (
+                    <PageNumber onPageClicked={(page: number) => setPage(page)} {...data.GetInvestmentsForApproval} length={data.GetInvestmentsForApproval.docs.length} />
+                )}
             </div>
+
+            {data && data.GetInvestmentsForApproval.docs.length === 0 && (
+                <div className="mt-5 intro-y">
+                    <div className="flex flex-col">
+                        <Albums className="w-16 h-16 text-theme-1 mx-auto mt-5" />
+                        <p className="text-gray-600 mx-auto mt-5">No Investment for approval!</p>
+                    </div>
+                </div>
+            )}
 
             <div className="modal" id="approval-box">
                 <div className="modal__content">
