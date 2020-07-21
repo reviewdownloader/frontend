@@ -12,11 +12,11 @@ import YourReferral from "./Referrals/index";
 import Profile from "./Profile/index";
 import InvestmentHistory from "./YourInvestment/History";
 import Plan from "./Management/Plan";
-import UserManagement from './User/index';
-import UserProfile from './User/Profile';
-import LoadInvestment from './Management/LoadInvestment/index';
+import UserManagement from "./User/index";
+import UserProfile from "./User/Profile";
+import LoadInvestment from "./Management/LoadInvestment/index";
 import AdminRoute from "../../components/AdminRoute";
-
+import Payout from "./AdminCorner/Payout/index";
 
 const AppAccount = () => {
     // Update css class name
@@ -42,6 +42,7 @@ const AppAccount = () => {
                     <AdminRoute path="/app/users" component={UserManagement} />
                     <Route path="/app/user/:id" component={UserProfile} />
                     <AdminRoute path="/app/load-investment" component={LoadInvestment} />
+                    <AdminRoute path="/app/payout" component={Payout} />
                 </Switch>
             </div>
         </>

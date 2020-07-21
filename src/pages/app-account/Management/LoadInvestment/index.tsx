@@ -47,7 +47,7 @@ const LoadInvestment = () => {
         <>
             <Helmet>
                 <title>
-                    {title}| {AppName}
+                    {title} | {AppName}
                 </title>
             </Helmet>
             <div className="box px-8 py-16 mt-8" style={{ minHeight: "70vh" }}>
