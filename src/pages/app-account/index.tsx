@@ -18,6 +18,7 @@ import AdminRoute from "../../components/AdminRoute";
 import Payout from "./AdminCorner/Payout/index";
 import InvestmentApproval from "./AdminCorner/InvestmentApproval/index";
 import ReferralBonus from "./AdminCorner/ref-bonus";
+import ActiveInvestment from "./AdminCorner/ActiveInvestment";
 
 const AppAccount = () => {
     // Update css class name
@@ -47,6 +48,7 @@ const AppAccount = () => {
                     <AdminRoute path="/app/payout" component={Payout} />
                     <AdminRoute path="/app/investment-approval" component={InvestmentApproval} />
                     <AdminRoute path="/app/ref-bonus" component={ReferralBonus} />
+                    <AdminRoute path="/app/active-investment" component={ActiveInvestment} />
                 </Switch>
             </div>
         </>

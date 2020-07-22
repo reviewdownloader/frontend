@@ -123,7 +123,7 @@ const InvestmentApprovalItems = () => {
                             {data && data.GetInvestmentsForApproval.docs.length > 0 && (
                                 <tr>
                                     <th className="text-center whitespace-no-wrap">#</th>
-                                    <th className="whitespace-no-wrap">Person</th>
+                                    <th className="whitespace-no-wrap">Investor</th>
                                     <th className="whitespace-no-wrap text-center">Country</th>
                                     <th className="text-center whitespace-no-wrap">investment made</th>
                                     <th className="text-left whitespace-no-wrap">Plan</th>

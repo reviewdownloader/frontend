@@ -24,7 +24,7 @@ const ReferralItems: FC<iProp> = ({ items }) => {
                     <thead className="uppercase font-bold">
                         <tr>
                             <th className="text-center whitespace-no-wrap">#</th>
-                            <th className="whitespace-no-wrap">Person</th>
+                            <th className="whitespace-no-wrap">Investor</th>
                             <th className="whitespace-no-wrap">Referred</th>
                             <th className="text-center whitespace-no-wrap">investment made</th>
                             <th className="text-left whitespace-no-wrap">Made At</th>

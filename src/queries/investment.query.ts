@@ -73,6 +73,9 @@ export const CLOSE_INVESTMENT = gql`
     mutation CloseInvestment($id: ID!) {
         CloseInvestment(id: $id) {
             message
+            doc {
+                id
+            }
         }
     }
 `;
@@ -161,6 +164,32 @@ export const INVESTMENT_APPROVAL = gql`
             totalPages
             nextPage
             prevPage
+        }
+    }
+    ${INVESTMENT_PROP}
+`;
+
+export const GET_ACTIVE = gql`
+    query GetActiveInvestment($page: Int, $limit: Int, $user: String) {
+        GetActiveInvestment(page: $page, limit: $limit, user: $user) {
+            page
+            limit
+            docs {
+                ...InvestmentProp
+                user {
+                    id
+                    firstname
+                    lastname
+                    email
+                    nationality
+                    gender
+                    image
+                }
+            }
+            totalPages
+            totalDocs
+            prevPage
+            nextPage
         }
     }
     ${INVESTMENT_PROP}

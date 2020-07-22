@@ -15,7 +15,7 @@ const PayoutList: FC<iProp> = ({ items, onPay }) => {
                     <thead className="uppercase font-bold">
                         <tr>
                             <th className="text-center whitespace-no-wrap">#</th>
-                            <th className="whitespace-no-wrap">Person</th>
+                            <th className="whitespace-no-wrap">Investor</th>
                             <th className="text-center whitespace-no-wrap">investment made</th>
                             <th className="text-left whitespace-no-wrap">Plan</th>
                             <th className="text-left whitespace-no-wrap">Last Payment</th>
