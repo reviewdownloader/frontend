@@ -44,5 +44,5 @@ export const toCurrency = (value: any): string => {
     if (value) {
         return Intl.NumberFormat("en-US").format(value);
     }
-    return "";
+    return "0";
 };

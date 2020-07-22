@@ -8,7 +8,9 @@ import { CleanMessage, toCurrency } from "./../../../context/App";
 import { LoadingIcon } from "../../../components/Button";
 import { RefreshCcw, Eye, PieChart, Users, GitCommit } from "@styled-icons/feather";
 import { Albums, CheckmarkDone, People, PeopleCircle, Cash, Wallet, StatsChart, Layers, RadioButtonOn, ShieldCheckmark } from "@styled-icons/ionicons-outline";
-
+import UpdateImage from "../Profile/UpdateImage";
+import UpdatePassword from "../Profile/ChangePassword";
+import UpdateEmail from "../Profile/UpdateEmail";
 
 const Dashboard = () => {
     const { t } = useTranslation();
@@ -95,6 +97,15 @@ const Dashboard = () => {
                                 </div>
                             </div>
                         </div>
+                        <div className="col-span-12 sm:col-span-6 xl:col-span-3 intro-">
+                            <UpdateImage />
+                        </div>
+                        <div className="col-span-12 sm:col-span-6 xl:col-span-6 intro-">
+                            <UpdatePassword />
+                        </div>
+                        <div className="col-span-12 sm:col-span-6 xl:col-span-3 intro-">
+                            <UpdateEmail />
+                        </div>
                     </div>
                     {admin && (
                         <>
@@ -152,7 +163,6 @@ const Dashboard = () => {
                                         </div>
                                     </div>
                                 </div>
-                               
                             </div>
                         </>
                     )}

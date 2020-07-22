@@ -50,7 +50,8 @@ const UpdatePassword = () => {
                 <div className="intro-y box lg:mt-5" style={{ minHeight: "66vh" }}>
                     <div className="flex items-center p-5 border-b border-gray-200">
                         <h2 className="font-medium text-base mr-auto">
-                            <Lock className="w-4 h-4 mr-2 text-theme-1" /> Change Password
+                            <Lock className="w-4 h-4 mr-2 text-theme-1" />
+                            {t("change_password")}
                         </h2>
                     </div>
                     <div className="p-5">

@@ -138,6 +138,8 @@ export const GET_SINGLE = gql`
                 referralCode
             }
         }
+        CountInvestment
+        CountReferral
     }
     ${USER_PROP}
 `;

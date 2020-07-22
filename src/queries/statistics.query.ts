@@ -11,5 +11,11 @@ const GET_COUNTS = gql`
         CountReferral
     }
 `;
+export const GET_COUNT_USER = gql`
+    query CountUserAll {
+        CountInvestment
+        CountReferral
+    }
+`;
 
 export { GET_COUNTS };

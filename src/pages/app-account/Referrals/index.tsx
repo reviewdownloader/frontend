@@ -1,21 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { AppName } from "../../../context/App";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@apollo/react-hooks";
-import { GET_YOUR_REFERRALS } from "../../../queries/user.query";
 import { toast } from "react-toastify";
 import { CleanMessage } from "./../../../context/App";
 import { LoadingIcon } from "../../../components/Button";
-import UserItems from "./items";
 import { Copy } from "@styled-icons/feather";
 import { authService } from "./../../../services/Authentication.Service";
+import { GET_REFERRALS } from "../../../queries/referral.query";
+import ReferrerItems from "./items";
+import { GET_COUNT_USER } from "../../../queries/statistics.query";
 
 const YourReferral = () => {
     const { t } = useTranslation();
+    const [invest, setInvest] = useState(0);
     const { referralCode } = authService.GetUser();
+    useQuery(GET_COUNT_USER, {
+        onCompleted: (d) => {
+            setInvest(d.CountReferral);
+        },
+    });
 
-    const { loading, data } = useQuery(GET_YOUR_REFERRALS, {
+    const { loading, data } = useQuery(GET_REFERRALS, {
         onError: (er) => toast.error(CleanMessage(er.message)),
     });
     return (
@@ -40,7 +47,12 @@ const YourReferral = () => {
 
             <LoadingIcon className="text-theme-1" loading={loading} />
 
-            {data && !loading && <UserItems items={data.GetYourReferrals.docs} />}
+            {data && !loading && <ReferrerItems items={data.GetReferrals.docs} />}
+            <div className="mt-8">
+                <span className="button w-56 rounded-full mr-1 mb-2 bg-theme-14 text-theme-10 font-medium">
+                    {t("general.referral")}: {invest}
+                </span>
+            </div>
         </>
     );
 };

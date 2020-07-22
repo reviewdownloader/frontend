@@ -6,17 +6,17 @@ import { toast } from "react-toastify";
 import { CleanMessage } from "./../../../context/App";
 import { GET_USERS } from "../../../queries/user.query";
 import { LoadingIcon } from "../../../components/Button";
-import UserItems from "../Referrals/items";
 import { Search, Refresh } from "@styled-icons/ionicons-outline";
 import PaginationSummary from "../../../components/Paging/Summary";
 import PageNumber from "./../../../components/Paging/Number";
+import UserItems from "./Items";
 // import Select from "react-select";
 // import countries from "../../../data/country.json";
 
 const UserManagement = () => {
     const [page, setPage] = useState<number>(1);
     const [limit] = useState<number>(25);
-    const [nationality, setNationality] = useState<any>(null);
+    const [nationality] = useState<any>(null);
     const [user, setUser] = useState<any>(null);
 
     // get user list
@@ -51,24 +51,6 @@ const UserManagement = () => {
             <LoadingIcon loading={loading} />
             <div className="grid grid-cols-12 gap-6 mt-5">
                 <div className="intro-y col-span-12 flex flex-wrap sm:flex-no-wrap items-center mt-2">
-                    {/* <Select
-                        onChange={async (item: any) =>
-                            await refetch({
-                                page,
-                                limit,
-                                nationality: item.value,
-                                user,
-                            })
-                        }
-                        className="intro-x block w-56 mt-4"
-                        isMulti={false}
-                        placeholder="Filter by country"
-                        options={countries.map((item) => ({
-                            value: item.name,
-                            label: item.name,
-                        }))}
-                    /> */}
-
                     {(user || nationality) && (
                         <button
                             onClick={async () => {

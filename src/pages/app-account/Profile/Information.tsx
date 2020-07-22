@@ -1,8 +1,10 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { User } from "./../../../model/user.model";
 import { Mail, PhoneCall, Globe, User as UserIcon, Shield } from "@styled-icons/feather";
 import { useTranslation } from "react-i18next";
 import { CleanDate } from "../../../context/App";
+import { useQuery } from "@apollo/react-hooks";
+import { GET_COUNT_USER } from "../../../queries/statistics.query";
 
 interface IProps {
     user: User;
@@ -10,6 +12,15 @@ interface IProps {
 
 const UserInformation: FC<IProps> = ({ user }) => {
     const { t } = useTranslation();
+    const [invests, setInvest] = useState(0);
+    const [refs, setRef] = useState(0);
+
+    useQuery(GET_COUNT_USER, {
+        onCompleted: (d) => {
+            setInvest(d.CountInvestment);
+            setRef(d.CountReferral);
+        },
+    });
     if (user)
         return (
             <div className="intro-y box lg:mt-5">
@@ -51,11 +62,11 @@ const UserInformation: FC<IProps> = ({ user }) => {
                         </div>
                         <div className="mt-6 lg:mt-0 flex-1 flex items-center justify-center px-5 border-t lg:border-0 border-gray-200 pt-5 lg:pt-0">
                             <div className="text-center rounded-md w-20 py-3">
-                                <div className="font-semibold text-theme-1 text-lg">{user.investments.length}</div>
+                                <div className="font-semibold text-theme-1 text-lg">{invests}</div>
                                 <div className="text-gray-600">{t("side.investment")}</div>
                             </div>
                             <div className="text-center rounded-md w-20 py-3">
-                                <div className="font-semibold text-theme-1 text-lg">{user.referred.length}</div>
+                                <div className="font-semibold text-theme-1 text-lg">{refs}</div>
                                 <div className="text-gray-600">{t("referrer")}</div>
                             </div>
                         </div>

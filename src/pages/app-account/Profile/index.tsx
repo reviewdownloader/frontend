@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Helmet } from "react-helmet";
 import { AppName } from "../../../context/App";
 import { useTranslation } from "react-i18next";
@@ -11,7 +11,7 @@ import UpdateInformation from "./UpdateInformation";
 import UpdatePassword from "./ChangePassword";
 import UpdateEmail from "./UpdateEmail";
 import NotFound from "./../../404";
-import { Reader, CheckmarkDone, StatsChart } from "@styled-icons/ionicons-outline";
+import {  CheckmarkDone, StatsChart } from "@styled-icons/ionicons-outline";
 import { useMutation } from "@apollo/react-hooks";
 import { FIX_INVESTMENT } from "./../../../queries/investment.query";
 import { toast } from "react-toastify";
@@ -22,6 +22,7 @@ import { FIX_REFERRAL } from "../../../queries/referral.query";
 const Profile = () => {
     const { t } = useTranslation();
     const user = authService.GetUser();
+  
 
     const [fixInvestmentFunc, { loading }] = useMutation(FIX_INVESTMENT, {
         onError: (er) => toast.error(CleanMessage(er.message)),
@@ -35,6 +36,9 @@ const Profile = () => {
             toast.success(d.FixReferral);
         },
     });
+
+  
+
     return (
         <>
             <Helmet>
@@ -82,7 +86,7 @@ const Profile = () => {
                             </NavLink>
                             {user.admin && (
                                 <>
-                                    <LoadingIcon loading={loading} />
+                                    <LoadingIcon loading={loading || refLoading} />
                                     <div className="p-5 border-t border-theme-1 flex">
                                         <button
                                             onClick={async (event) => {

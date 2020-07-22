@@ -61,7 +61,6 @@
     "plan.title": "Obecny plan",
     "pay.text": "Dokonać płatności",
     "investment.payment": "Płatność inwestycyjna",
-    "investment.instruction": "Dokonaj przelewu kwoty zainwestowanej w bitcoiny na poniższy adres portfela. Po dokonaniu płatności kliknij przycisk Kontynuuj",
     "pay.done": "Kontyntynuj",
     "reinvestment": "Zainwestować ponownie",
     "approval.status": "czekać na akceptację",
@@ -177,5 +176,34 @@
     "i.compound.text": "Złożony",
     "i.amount.text": "Oczekiwana wypłata",
     "i.compound.title": "Inwestycja złożona",
-    "i.compound.week": "Wybierz liczbę tygodni dla związku"
+    "i.compound.week": "Wybierz liczbę tygodni dla związku",
+
+    
+    "login_title": "Jeszcze kilka kliknięć, aby",
+    "login_title_2": "Zaloguj się.",
+    "login_title_desc": "Zarządzaj wszystkimi inwestycjami w jednym miejscu",
+    "login_desc": "Jeszcze kilka kliknięć, aby zalogować się na swoje konto. Zarządzaj wszystkimi inwestycjami w jednym miejscu",
+    "sign_up_title_2": "zarejestruj się na swoje konto",
+    "btn-register": "Zarejestrować",
+
+    "terms_intro": "Rejestrując się, zgadzasz się na nasze",
+    "terms": "Regulamin",
+    "policy": "Polityka prywatności",
+    "sign_up": "Zapisz się",
+    "agree": "zgadzam się z",
+    "change_email": "Zmień adres e-mail",
+    "change_phone": "Zmień telefon",
+    "change_password": "Zmień hasło",
+    "account_setting": "Ustawienia konta",
+    "referral_code": "kod polecającego",
+    "info": "Informacje osobiste",
+    "display": "Wyświetl informacje",
+    "change_image": "Zaktualizuj zdjęcie profilowe",
+    "edit_image": "Zmień obrazek",
+    "save_changes": "Zapisz zmiany",
+    "password_mismatch": "Hasło Nie pasuje!",
+    "btn.cancel": "Anuluj",
+    "confirm.text": "Tego procesu nie można cofnąć.",
+    "investment.instruction": "Przenieś kwotę zainwestowaną w bitcoiny na poniższy adres portfela. Po dokonaniu płatności wprowadź adres portfela transakcji i kliknij przycisk kontynuuj"
+
 }

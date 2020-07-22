@@ -61,7 +61,6 @@
     "plan.title": "Derzeitiger Plan",
     "pay.text": "Zahlung leisten",
     "investment.payment": "Investitionszahlung",
-    "investment.instruction": "Überweisen Sie den in Bitcoin investierten Betrag an die unten angegebene Brieftaschenadresse. Nachdem die Zahlung erfolgt ist, klicken Sie auf die Schaltfläche Weiter",
     "pay.done": "Fortsetzen",
     "reinvestment": "reinvestieren",
     "approval.status": "Warten auf Genehmigung",
@@ -177,5 +176,33 @@
     "i.compound.text": "Verbinding",
     "i.amount.text": "Verwachte uitbetaling",
     "i.compound.title": "Samengestelde investering",
-    "i.compound.week": "Selecteer het aantal weken voor compound"
+    "i.compound.week": "Selecteer het aantal weken voor compound",
+
+    
+    "login_title": "Noch ein paar Klicks",
+    "login_title_2": "Melden Sie sich bei Ihrem Konto an.",
+    "login_title_desc": "Verwalten Sie alle Ihre Investitionen an einem Ort",
+    "login_desc": "Noch ein paar Klicks, um sich in Ihrem Konto anzumelden. Verwalten Sie alle Ihre Investitionen an einem Ort",
+    "sign_up_title_2": "Melden Sie sich bei Ihrem Konto an",
+    "btn-register": "Registrieren",
+
+    "terms_intro": "Mit Ihrer Anmeldung stimmen Sie unseren zu",
+    "terms": "Geschäftsbedingungen",
+    "policy": "Datenschutz-Bestimmungen",
+    "sign_up": "Anmelden",
+    "agree": "Ich stimme dem zu",
+    "change_email": "Ändern Sie die E-Mail",
+    "change_phone": "Telefon wechseln",
+    "change_password": "Ändere das Passwort",
+    "account_setting": "Konto-Einstellung",
+    "referral_code": "Referenzcode",
+    "info": "Persönliche Informationen",
+    "display": "Informationen anzeigen",
+    "change_image": "Profilbild aktualisieren",
+    "edit_image": "Bild ändern",
+    "save_changes": "Änderungen speichern",
+    "password_mismatch": "Passwort stimmt nicht überein!",
+    "btn.cancel": "Stornieren",
+    "confirm.text": "Dieser Vorgang kann nicht rückgängig gemacht werden.",
+    "investment.instruction": "Überweisen Sie den in Bitcoin investierten Betrag an die unten angegebene Brieftaschenadresse. Geben Sie nach der Zahlung die Brieftaschenadresse der Transaktion ein und klicken Sie auf die Schaltfläche Weiter"
 }

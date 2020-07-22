@@ -38,7 +38,7 @@ const UpdateImage = () => {
             </div>
             <div className="p-5">
                 <div className="grid grid-cols-12 gap-5">
-                    <div className="col-span-12 xl:col-span-4">
+                    <div className="col-span-12 xl:col-span-12">
                         <div className="border border-gray-200 rounded-md p-5">
                             <div className="w-40 h-40 relative image-fit cursor-pointer zoom-in mx-auto">
                                 <img className="rounded-md" alt={firstname} src={dp || "dist/images/profile-11.jpg"} />

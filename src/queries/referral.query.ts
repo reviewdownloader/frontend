@@ -18,6 +18,7 @@ const ReferralProps = gql`
             email
             phone
             image
+            
         }
     }
 `;
