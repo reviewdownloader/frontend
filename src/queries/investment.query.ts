@@ -194,3 +194,9 @@ export const GET_ACTIVE = gql`
     }
     ${INVESTMENT_PROP}
 `;
+
+export const FIX_INVESTMENT = gql`
+    mutation FixInvestment {
+        FixInvestment
+    }
+`;

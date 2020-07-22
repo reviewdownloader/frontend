@@ -78,3 +78,9 @@ export const PAY_REFERRAL = gql`
         }
     }
 `;
+
+export const FIX_REFERRAL = gql`
+    mutation FixReferral {
+        FixReferral
+    }
+`;

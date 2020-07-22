@@ -8,13 +8,33 @@ import { NavLink, Switch, Route } from "react-router-dom";
 import UserInformation from "./Information";
 import UpdateImage from "./UpdateImage";
 import UpdateInformation from "./UpdateInformation";
-import UpdatePassword from './ChangePassword';
-import UpdateEmail from './UpdateEmail';
-import NotFound from './../../404';
+import UpdatePassword from "./ChangePassword";
+import UpdateEmail from "./UpdateEmail";
+import NotFound from "./../../404";
+import { Reader, CheckmarkDone, StatsChart } from "@styled-icons/ionicons-outline";
+import { useMutation } from "@apollo/react-hooks";
+import { FIX_INVESTMENT } from "./../../../queries/investment.query";
+import { toast } from "react-toastify";
+import { CleanMessage } from "./../../../context/App";
+import { LoadingIcon } from "../../../components/Button";
+import { FIX_REFERRAL } from "../../../queries/referral.query";
 
 const Profile = () => {
     const { t } = useTranslation();
     const user = authService.GetUser();
+
+    const [fixInvestmentFunc, { loading }] = useMutation(FIX_INVESTMENT, {
+        onError: (er) => toast.error(CleanMessage(er.message)),
+        onCompleted: (d) => {
+            toast.success(d.FixInvestment);
+        },
+    });
+    const [fixReferralFunc, { loading: refLoading }] = useMutation(FIX_REFERRAL, {
+        onError: (er) => toast.error(CleanMessage(er.message)),
+        onCompleted: (d) => {
+            toast.success(d.FixReferral);
+        },
+    });
     return (
         <>
             <Helmet>
@@ -60,6 +80,33 @@ const Profile = () => {
                                 <Settings className="w-4 h-4 mr-2" />
                                 {t("change_email")}
                             </NavLink>
+                            {user.admin && (
+                                <>
+                                    <LoadingIcon loading={loading} />
+                                    <div className="p-5 border-t border-theme-1 flex">
+                                        <button
+                                            onClick={async (event) => {
+                                                event.preventDefault();
+                                                await fixInvestmentFunc();
+                                            }}
+                                            type="button"
+                                            className="button block border bg-theme-14 text-theme-10 rounded font-medium"
+                                        >
+                                            <StatsChart className="h-8 w-8 mr-2" /> Fix Investment
+                                        </button>
+                                        <button
+                                            onClick={async (event) => {
+                                                event.preventDefault();
+                                                await fixReferralFunc();
+                                            }}
+                                            type="button"
+                                            className="button border bg-theme-18 text-theme-9 rounded font-medium ml-auto"
+                                        >
+                                            <CheckmarkDone className="h-8 w-8 mr-2" /> Fix Referral
+                                        </button>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
