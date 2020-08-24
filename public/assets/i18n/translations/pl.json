@@ -178,7 +178,6 @@
     "i.compound.title": "Inwestycja złożona",
     "i.compound.week": "Wybierz liczbę tygodni dla związku",
 
-    
     "login_title": "Jeszcze kilka kliknięć, aby",
     "login_title_2": "Zaloguj się.",
     "login_title_desc": "Zarządzaj wszystkimi inwestycjami w jednym miejscu",
@@ -204,6 +203,14 @@
     "password_mismatch": "Hasło Nie pasuje!",
     "btn.cancel": "Anuluj",
     "confirm.text": "Tego procesu nie można cofnąć.",
-    "investment.instruction": "Przenieś kwotę zainwestowaną w bitcoiny na poniższy adres portfela. Po dokonaniu płatności wprowadź adres portfela transakcji i kliknij przycisk kontynuuj"
-
+    "investment.instruction": "Przenieś kwotę zainwestowaną w bitcoiny na poniższy adres portfela. Po dokonaniu płatności wprowadź adres portfela transakcji i kliknij przycisk kontynuuj",
+    
+    "token-input": "wprowadź token weryfikacyjny ...",
+    "next_heading": "Krewny",
+    "name.label": "Imię",
+    "name.placeholder": "Wprowadź imię",
+    "relationship.label": "Relacja z najbliższym krewnym",
+    "2fa": "Uwierzytelnianie dwuskładnikowe",
+    "2fa-off": "Wyłącz uwierzytelnianie dwuskładnikowe",
+    "2fa-on": "Włącz uwierzytelnianie dwuskładnikowe"
 }

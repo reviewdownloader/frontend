@@ -18,4 +18,6 @@ export class User {
     investments: Array<Investment> = [];
     image = "";
     referralCode = "";
+    next_of_kin = null;
+    useTwoF = false;
 }

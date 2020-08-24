@@ -178,7 +178,6 @@
     "i.compound.title": "Samengestelde investering",
     "i.compound.week": "Selecteer het aantal weken voor compound",
 
-    
     "login_title": "Noch ein paar Klicks",
     "login_title_2": "Melden Sie sich bei Ihrem Konto an.",
     "login_title_desc": "Verwalten Sie alle Ihre Investitionen an einem Ort",
@@ -204,5 +203,14 @@
     "password_mismatch": "Passwort stimmt nicht überein!",
     "btn.cancel": "Stornieren",
     "confirm.text": "Dieser Vorgang kann nicht rückgängig gemacht werden.",
-    "investment.instruction": "Überweisen Sie den in Bitcoin investierten Betrag an die unten angegebene Brieftaschenadresse. Geben Sie nach der Zahlung die Brieftaschenadresse der Transaktion ein und klicken Sie auf die Schaltfläche Weiter"
+    "investment.instruction": "Überweisen Sie den in Bitcoin investierten Betrag an die unten angegebene Brieftaschenadresse. Geben Sie nach der Zahlung die Brieftaschenadresse der Transaktion ein und klicken Sie auf die Schaltfläche Weiter",
+
+    "token-input": "Bestätigungs-Token eingeben ..",
+    "next_heading": "Weiter von Kin",
+    "name.label": "Name",
+    "name.placeholder": "Name eingeben",
+    "relationship.label": "Beziehung zu den nächsten Verwandten",
+    "2fa": "Zwei-Faktor-Authentifizierung",
+    "2fa-off": "Deaktivieren Sie die Zwei-Faktor-Authentifizierung",
+    "2fa-on": "Aktivieren Sie die Zwei-Faktor-Authentifizierung"
 }

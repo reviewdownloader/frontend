@@ -208,5 +208,14 @@
     "password_mismatch": "¡La contraseña no coincide!",
     "btn.cancel": "Cancelar",
     "confirm.text": "Este proceso no se puede deshacer.",
-    "investment.instruction": "Realice una transferencia de la cantidad invertida en bitcoin a la dirección de billetera a continuación. Después de realizar el pago, ingrese la dirección de la billetera de la transacción y haga clic en el botón Continuar"
+    "investment.instruction": "Realice una transferencia de la cantidad invertida en bitcoin a la dirección de billetera a continuación. Después de realizar el pago, ingrese la dirección de la billetera de la transacción y haga clic en el botón Continuar",
+
+    "token-input": "ingrese el token de verificación..",
+    "next_heading": "Próximo de Kin",
+    "name.label": "Nombre",
+    "name.placeholder": "Ingrese su nombre",
+    "relationship.label": "Relación con los familiares más cercanos",
+    "2fa": "Autenticación de dos factores",
+    "2fa-off": "Deshabilitar la autenticación de dos factores",
+    "2fa-on": "Habilitar la autenticación de dos factores"
 }

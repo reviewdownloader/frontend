@@ -208,5 +208,14 @@
     "password_mismatch": "Password do not match!",
     "btn.cancel": "Cancel",
     "confirm.text": " This process cannot be undone.",
-    "investment.instruction": "Make a transfer of the amount invested in bitcoin to the wallet address below. After making the payment, enter the transaction's wallet address and click on the continue button"
+    "investment.instruction": "Make a transfer of the amount invested in bitcoin to the wallet address below. After making the payment, enter the transaction's wallet address and click on the continue button",
+
+    "token-input": "enter verification token..",
+    "next_heading": "Next of Kin",
+    "name.label": "Name",
+    "name.placeholder": "Enter name",
+    "relationship.label": "Relationship to next of kin",
+    "2fa": "Two factor authentication",
+    "2fa-off": "Disable two factor authentication",
+    "2fa-on": "Enable two factor authentication"
 }

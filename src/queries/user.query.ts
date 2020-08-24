@@ -23,6 +23,15 @@ const USER_PROP = gql`
             image
             lastname
         }
+        next_of_kin {
+            id
+            name
+            email
+            relationship
+            phone
+            image
+        }
+        useTwoF
     }
 `;
 export const LOGIN = gql`
@@ -165,4 +174,43 @@ export const REMOVE_USER = gql`
             message
         }
     }
+`;
+
+export const CREATE_KIN = gql`
+    mutation CreateKinAccount($model: NextInput!) {
+        NewNextOfKin(model: $model) {
+            id
+            name
+            email
+            phone
+            image
+            relationship
+        }
+    }
+`;
+
+export const UPDATE_KIN = gql`
+    mutation UpdateKinAccount($id: ID!, $update: NextInput!) {
+        UpdateNextOfKin(update: $update, id: $id) {
+            id
+            name
+            email
+            phone
+            image
+            relationship
+        }
+    }
+`;
+
+export const UPDATE_2FA = gql`
+    mutation Update2FA($status: Boolean!) {
+        Update2FA(status: $status) {
+            message
+            doc {
+                ...UserProps
+                referralCode
+            }
+        }
+    }
+    ${USER_PROP}
 `;

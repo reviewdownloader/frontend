@@ -41,7 +41,7 @@ const UpdateImage = () => {
                     <div className="col-span-12 xl:col-span-12">
                         <div className="border border-gray-200 rounded-md p-5">
                             <div className="w-40 h-40 relative image-fit cursor-pointer zoom-in mx-auto">
-                                <img className="rounded-md" alt={firstname} src={dp || "dist/images/profile-11.jpg"} />
+                                <img className="rounded-md" alt={firstname} src={dp || "dist/images/profile.png"} />
                             </div>
                             <div className="w-40 mx-auto cursor-pointer relative mt-5">
                                 <button disabled={loading} type="button" className="button w-full bg-theme-1 text-white">

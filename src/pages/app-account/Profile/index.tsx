@@ -11,13 +11,14 @@ import UpdateInformation from "./UpdateInformation";
 import UpdatePassword from "./ChangePassword";
 import UpdateEmail from "./UpdateEmail";
 import NotFound from "./../../404";
-import {  CheckmarkDone, StatsChart } from "@styled-icons/ionicons-outline";
+import {  CheckmarkDone, StatsChart, PersonAdd } from "@styled-icons/ionicons-outline";
 import { useMutation } from "@apollo/react-hooks";
 import { FIX_INVESTMENT } from "./../../../queries/investment.query";
 import { toast } from "react-toastify";
 import { CleanMessage } from "./../../../context/App";
 import { LoadingIcon } from "../../../components/Button";
 import { FIX_REFERRAL } from "../../../queries/referral.query";
+import NextOfKinPage from './NextOfkin';
 
 const Profile = () => {
     const { t } = useTranslation();
@@ -76,6 +77,10 @@ const Profile = () => {
                                 <Edit3 className="w-4 h-4 mr-2" />
                                 {t("account_setting")}
                             </NavLink>
+                            <NavLink activeClassName="text-theme-1" className="flex items-center mt-5 hover:bg-gray-200 p-3" to="/app/profile/next-of-kin">
+                                <PersonAdd className="w-4 h-4 mr-2" />
+                                {t("next_heading")}
+                            </NavLink>
                             <NavLink activeClassName="text-theme-1" className="flex items-center mt-5 hover:bg-gray-200 p-3" to="/app/profile/change-password">
                                 <Lock className="w-4 h-4 mr-2" />
                                 {t("change_password")}
@@ -121,6 +126,7 @@ const Profile = () => {
                         <Route path="/app/profile/update" component={UpdateInformation} />
                         <Route path="/app/profile/change-password" component={UpdatePassword} />
                         <Route path="/app/profile/change-email" component={UpdateEmail} />
+                        <Route path="/app/profile/next-of-kin" component={NextOfKinPage} />
                         <Route component={NotFound} />
                     </Switch>
                 </div>

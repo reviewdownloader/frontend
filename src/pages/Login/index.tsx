@@ -22,22 +22,29 @@ const Login: FC<iProp> = ({ history, location }) => {
     //
     const [model, setModel] = useState({ email: "", password: "" });
     const [attempt] = useState(0);
+    const [showToken, setShowToken] = useState(false);
+    const [token, setToken] = useState("token");
 
     const [loginFunc, { loading }] = useMutation(LOGIN, {
         onError: (error) => toast.error(CleanMessage(error.message)),
         onCompleted: (data) => {
             if (data.Login) {
-                const { token, doc } = data.Login;
-                authService.Login(doc, token);
-                const { from } = location.state || {
-                    from: { pathname: "/app" },
-                };
-                document.location.href = from.pathname;
+                const { token: t, doc, message } = data.Login;
+                if (t) {
+                    authService.Login(doc, t);
+                    const { from } = location.state || {
+                        from: { pathname: "/app" },
+                    };
+                    document.location.href = from.pathname;
+                } else {
+                    toast.success(message);
+                    setShowToken(true);
+                }
             }
         },
     });
 
-    if(authService.IsAuthenticated()) return <Redirect to="/app" />
+    if (authService.IsAuthenticated()) return <Redirect to="/app" />;
 
     return (
         <>
@@ -81,6 +88,7 @@ const Login: FC<iProp> = ({ history, location }) => {
                                             option: {
                                                 attempt,
                                                 userAgent: navigator.userAgent,
+                                                token,
                                             },
                                         },
                                     });
@@ -103,6 +111,15 @@ const Login: FC<iProp> = ({ history, location }) => {
                                         className="intro-x login__input input input--lg border border-gray-300 block mt-4"
                                         placeholder={t("password.placeholder")}
                                     />
+                                    {showToken && (
+                                        <input
+                                            type="text"
+                                            required
+                                            onChange={({ currentTarget: { value } }) => setToken(value)}
+                                            className="intro-x login__input input input--lg border border-gray-300 block mt-4"
+                                            placeholder={t("token-input")}
+                                        />
+                                    )}
                                 </div>
                                 <div className="intro-x flex text-gray-700 text-xs sm:text-sm mt-4">
                                     <div className="flex items-center mr-auto">

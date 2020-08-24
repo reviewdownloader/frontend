@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { authService } from "./../services/Authentication.Service";
 import LanguageChanger from "./LanguageChanger";
 import { Box } from "@styled-icons/feather/Box";
+import { PersonAdd } from "@styled-icons/ionicons-outline";
 
 const TopNavigation = () => {
     const { t } = useTranslation();
@@ -54,6 +55,9 @@ const TopNavigation = () => {
                                     </NavLink>
                                     <NavLink to="/app/profile/update" className="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
                                         <Edit3 className="w-4 h-4 mr-2" size={18} /> {t("account_setting")}
+                                    </NavLink>
+                                    <NavLink to="/app/profile/next-of-kin" className="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 rounded-md">
+                                        <PersonAdd className="w-4 h-4 mr-2" size={18} /> {t("next_heading")}
                                     </NavLink>
                                 </div>
                                 <div className="p-2 border-t border-theme-40">
