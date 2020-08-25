@@ -17,7 +17,7 @@ const TopNavigation = () => {
                     <a href="/" className="-intro-x hidden md:flex">
                         <img alt="Investment Bot" className="w-6" src="/dist/images/logo.svg" />
                         <span className="text-white text-lg ml-3">
-                            Trade<span className="font-medium">Bot</span>
+                            Investment<span className="font-medium">Bot</span>
                         </span>
                     </a>
 

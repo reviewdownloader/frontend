@@ -41,7 +41,7 @@ const ForgotPassword: FC<iProp> = ({ history }) => {
                         <a href="/" className="-intro-x flex items-center pt-5">
                             <img alt="Investment bot" className="w-6" src="dist/images/logo.svg" />
                             <span className="text-white text-lg ml-3">
-                                Trade<span className="font-medium">Bot</span>
+                                Investment<span className="font-medium">Bot</span>
                             </span>
                         </a>
                         <div className="my-auto">
