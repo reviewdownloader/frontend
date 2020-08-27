@@ -84,7 +84,7 @@ const CreateAccount: FC<iProp> = ({ history, location }) => {
                                         };
                                         const { re_password, referralCode, ...rest } = user;
                                         await createFunc({
-                                            variables: { option, model: rest, referral: referralCode },
+                                            variables: { option, model: rest, referrer: referralCode },
                                         });
                                     }
                                 }}
