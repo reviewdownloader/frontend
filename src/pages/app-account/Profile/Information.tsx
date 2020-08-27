@@ -33,7 +33,7 @@ const UserInformation: FC<IProps> = ({ user }) => {
                     <div className="flex flex-col lg:flex-row border-b border-gray-200 pb-5 -mx-5">
                         <div className="flex flex-1 px-5 items-center justify-center lg:justify-start">
                             <div className="w-20 h-20 sm:w-24 sm:h-24 flex-none lg:w-32 lg:h-32 image-fit relative">
-                                <img alt={user.firstname} className="rounded-full" src={user.image || "/dist/images/profile-10.jpg"} />
+                                <img alt={user.firstname} className="rounded-full" src={user.image || "/dist/images/profile.png"} />
                             </div>
                             <div className="ml-5">
                                 <div className="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg">

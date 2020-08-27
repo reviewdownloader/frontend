@@ -35,7 +35,7 @@ const TopNavigation = () => {
                     </div>
                     <div className="intro-x dropdown w-8 h-8 relative">
                         <div className="dropdown-toggle w-8 h-8 rounded-full overflow-hidden shadow-lg image-fit zoom-in scale-110">
-                            <img alt={user.firstname} src={user.image || "/dist/images/profile-6.jpg"} />
+                            <img alt={user.firstname} src={user.image || "/dist/images/profile.png"} />
                         </div>
                         <div className="dropdown-box mt-10 absolute w-56 top-0 right-0 z-20">
                             <div className="dropdown-box__content box bg-theme-38 text-white">
