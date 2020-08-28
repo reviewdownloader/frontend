@@ -23,10 +23,15 @@ const Login: FC<iProp> = ({ history, location }) => {
     const [model, setModel] = useState({ email: "", password: "" });
     const [attempt] = useState(0);
     const [showToken, setShowToken] = useState(false);
-    const [token, setToken] = useState("token");
+    const [token, setToken] = useState("");
 
     const [loginFunc, { loading }] = useMutation(LOGIN, {
-        onError: (error) => toast.error(CleanMessage(error.message)),
+        onError: (error) => {
+            if (error.message.includes("Invalid verification code")) {
+                toast.warning(error.message);
+                setShowToken(true);
+            } else toast.error(CleanMessage(error.message));
+        },
         onCompleted: (data) => {
             if (data.Login) {
                 const { token: t, doc, message } = data.Login;
@@ -115,6 +120,7 @@ const Login: FC<iProp> = ({ history, location }) => {
                                         <input
                                             type="text"
                                             required
+                                            defaultValue={token}
                                             onChange={({ currentTarget: { value } }) => setToken(value)}
                                             className="intro-x login__input input input--lg border border-gray-300 block mt-4"
                                             placeholder={t("token-input")}
