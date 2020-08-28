@@ -11,6 +11,7 @@ import { Albums, CheckmarkDone, People, PeopleCircle, Cash, Wallet, StatsChart, 
 import UpdateImage from "../Profile/UpdateImage";
 import UpdatePassword from "../Profile/ChangePassword";
 import UpdateEmail from "../Profile/UpdateEmail";
+import { NavLink } from "react-router-dom";
 
 const Dashboard = () => {
     const { t } = useTranslation();
@@ -34,52 +35,58 @@ const Dashboard = () => {
                 <>
                     <div className="grid grid-cols-12 gap-6 mt-8">
                         <div className="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                            <div className="report-box zoom-in">
-                                <div className="box p-5">
-                                    <div className="flex">
-                                        <Albums className="report-box__icon text-theme-10" />
-                                        <div className="ml-auto">
-                                            <div className="report-box__indicator bg-theme-1 tooltip cursor-pointer" title="33% Higher than last month">
-                                                <Eye className="w-4 h-4" />
+                            <NavLink to="/app/user-investment">
+                                <div className="report-box zoom-in">
+                                    <div className="box p-5">
+                                        <div className="flex">
+                                            <Albums className="report-box__icon text-theme-10" />
+                                            <div className="ml-auto">
+                                                <div className="report-box__indicator bg-theme-1 tooltip cursor-pointer" title="33% Higher than last month">
+                                                    <Eye className="w-4 h-4" />
+                                                </div>
                                             </div>
                                         </div>
+                                        <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountInvestment)}</div>
+                                        <div className="text-base text-gray-600 mt-1">{t("investment")}</div>
                                     </div>
-                                    <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountInvestment)}</div>
-                                    <div className="text-base text-gray-600 mt-1">{t("investment")}</div>
                                 </div>
-                            </div>
+                            </NavLink>
                         </div>
                         <div className="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                            <div className="report-box zoom-in">
-                                <div className="box p-5">
-                                    <div className="flex">
-                                        <Albums className="report-box__icon text-theme-10" />
-                                        <div className="ml-auto">
-                                            <div className="report-box__indicator bg-theme-9 tooltip cursor-pointer" title="33% Higher than last month">
-                                                <CheckmarkDone className="w-4 h-4" />
+                            <NavLink to="/app/user-investment">
+                                <div className="report-box zoom-in">
+                                    <div className="box p-5">
+                                        <div className="flex">
+                                            <Albums className="report-box__icon text-theme-10" />
+                                            <div className="ml-auto">
+                                                <div className="report-box__indicator bg-theme-9 tooltip cursor-pointer" title="33% Higher than last month">
+                                                    <CheckmarkDone className="w-4 h-4" />
+                                                </div>
                                             </div>
                                         </div>
+                                        <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountApprovedInvestment)}</div>
+                                        <div className="text-base text-gray-600 mt-1">{t("investment.approved")}</div>
                                     </div>
-                                    <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountApprovedInvestment)}</div>
-                                    <div className="text-base text-gray-600 mt-1">{t("investment.approved")}</div>
                                 </div>
-                            </div>
+                            </NavLink>
                         </div>
                         <div className="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                            <div className="report-box zoom-in">
-                                <div className="box p-5">
-                                    <div className="flex">
-                                        <People className="report-box__icon text-theme-11" />
-                                        <div className="ml-auto">
-                                            <div className="report-box__indicator bg-theme-11 tooltip cursor-pointer" title="33% Higher than last month">
-                                                <PeopleCircle className="w-4 h-4" />
+                            <NavLink to="/app/referral">
+                                <div className="report-box zoom-in">
+                                    <div className="box p-5">
+                                        <div className="flex">
+                                            <People className="report-box__icon text-theme-11" />
+                                            <div className="ml-auto">
+                                                <div className="report-box__indicator bg-theme-11 tooltip cursor-pointer" title="33% Higher than last month">
+                                                    <PeopleCircle className="w-4 h-4" />
+                                                </div>
                                             </div>
                                         </div>
+                                        <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountReferral)}</div>
+                                        <div className="text-base text-gray-600 mt-1">{t("home.referral")}</div>
                                     </div>
-                                    <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountReferral)}</div>
-                                    <div className="text-base text-gray-600 mt-1">{t("home.referral")}</div>
                                 </div>
-                            </div>
+                            </NavLink>
                         </div>
                         <div className="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                             <div className="report-box zoom-in">
@@ -116,52 +123,58 @@ const Dashboard = () => {
                             </div>
                             <div className="grid grid-cols-12 gap-6 mt-8">
                                 <div className="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                                    <div className="report-box zoom-in">
-                                        <div className="box p-5">
-                                            <div className="flex">
-                                                <Users className="report-box__icon text-theme-1" />
-                                                <div className="ml-auto">
-                                                    <div className="report-box__indicator bg-theme-1 tooltip cursor-pointer">
-                                                        <People className="w-4 h-4 mr-1" /> All
+                                    <NavLink to="/app/users">
+                                        <div className="report-box zoom-in">
+                                            <div className="box p-5">
+                                                <div className="flex">
+                                                    <Users className="report-box__icon text-theme-1" />
+                                                    <div className="ml-auto">
+                                                        <div className="report-box__indicator bg-theme-1 tooltip cursor-pointer">
+                                                            <People className="w-4 h-4 mr-1" /> All
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountUsers)}</div>
+                                                <div className="text-base text-gray-600 mt-1">Total Users</div>
                                             </div>
-                                            <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountUsers)}</div>
-                                            <div className="text-base text-gray-600 mt-1">Total Users</div>
                                         </div>
-                                    </div>
+                                    </NavLink>
                                 </div>
                                 <div className="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                                    <div className="report-box zoom-in">
-                                        <div className="box p-5">
-                                            <div className="flex">
-                                                <RadioButtonOn className="report-box__icon text-theme-11" />
-                                                <div className="ml-auto">
-                                                    <div className="report-box__indicator bg-theme-11 tooltip cursor-pointer">
-                                                        <GitCommit className="w-4 h-4 mr-1" /> 0-0
+                                    <NavLink to="/app/investment-approval">
+                                        <div className="report-box zoom-in">
+                                            <div className="box p-5">
+                                                <div className="flex">
+                                                    <RadioButtonOn className="report-box__icon text-theme-11" />
+                                                    <div className="ml-auto">
+                                                        <div className="report-box__indicator bg-theme-11 tooltip cursor-pointer">
+                                                            <GitCommit className="w-4 h-4 mr-1" /> 0-0
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountPendingInvestment)}</div>
+                                                <div className="text-base text-gray-600 mt-1">Pending Investment</div>
                                             </div>
-                                            <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountPendingInvestment)}</div>
-                                            <div className="text-base text-gray-600 mt-1">Pending Investment</div>
                                         </div>
-                                    </div>
+                                    </NavLink>
                                 </div>
                                 <div className="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
-                                    <div className="report-box zoom-in">
-                                        <div className="box p-5">
-                                            <div className="flex">
-                                                <ShieldCheckmark className="report-box__icon text-theme-9" />
-                                                <div className="ml-auto">
-                                                    <div className="report-box__indicator bg-theme-9 tooltip cursor-pointer">
-                                                        <Layers className="w-4 h-4 mr-1" /> 1-1
+                                    <NavLink to="/app/active-investment">
+                                        <div className="report-box zoom-in">
+                                            <div className="box p-5">
+                                                <div className="flex">
+                                                    <ShieldCheckmark className="report-box__icon text-theme-9" />
+                                                    <div className="ml-auto">
+                                                        <div className="report-box__indicator bg-theme-9 tooltip cursor-pointer">
+                                                            <Layers className="w-4 h-4 mr-1" /> 1-1
+                                                        </div>
                                                     </div>
                                                 </div>
+                                                <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountActiveInvestment)}</div>
+                                                <div className="text-base text-gray-600 mt-1">Active Investment</div>
                                             </div>
-                                            <div className="text-3xl font-bold leading-8 mt-6">{toCurrency(data.CountActiveInvestment)}</div>
-                                            <div className="text-base text-gray-600 mt-1">Active Investment</div>
                                         </div>
-                                    </div>
+                                    </NavLink>
                                 </div>
                             </div>
                         </>
