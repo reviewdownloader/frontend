@@ -9,6 +9,7 @@ import { MAKE_PAYMENT, CLOSE_INVESTMENT, REINVESTMENT, COMPOUND_INVESTMENT } fro
 import { toast } from "react-toastify";
 import { LoadingIcon } from "../../../components/Button";
 import { NavLink } from "react-router-dom";
+import app from "../../../data/app.json";
 
 interface iProp {
     items: Array<Investment>;
@@ -181,16 +182,20 @@ const Investments: FC<iProp> = ({ items }) => {
                                 <b>{t("plan.title")}</b>
                                 <h6>{active?.plan.title}</h6>
                             </div>
-                            <hr className="bg-theme-1" />
                             <div className="col-span-12 sm:col-span-12">
-                                <label>{t("wallet.label")}</label>
+                                <b>Receiver Wallet Address</b>
+                                <h6>{app.wallet}</h6>
+                            </div>
+                            <hr className="bg-theme-1 mt-3" />
+                            <div className="col-span-12 sm:col-span-12">
+                                <label>Payment wallet Address</label>
                                 <input
                                     defaultValue={wallet}
                                     onChange={({ currentTarget: { value } }) => setWallet(value)}
                                     type="text"
                                     className="input w-full border mt-2 flex-1"
                                     required
-                                    placeholder={t("wallet.placeholder")}
+                                    placeholder="Enter the wallet address of the sender"
                                 />
                             </div>
                         </div>
