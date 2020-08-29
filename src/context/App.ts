@@ -11,7 +11,7 @@ export const AppUploadUrl = () => REACT_APP_UploadBaseUrl || "";
 
 export const UploadPreset = () => REACT_APP_UploadPreset || "";
 
-export const AppName = "New Investment Bot";
+export const AppName = "JP Investment Services";
 
 export const CleanMessage = (message: string) => {
     if (message?.includes("Unauthorized access!")) {
