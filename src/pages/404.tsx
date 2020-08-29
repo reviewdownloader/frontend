@@ -17,7 +17,7 @@ const NotFound: FC<iProp> = ({ history }) => {
             <div className="container">
                 <div className="error-page flex flex-col lg:flex-row items-center justify-center h-screen text-center lg:text-left">
                     <div className="-intro-x lg:mr-20">
-                        <img alt="investment bot" className="h-48 lg:h-auto" src="dist/images/error-illustration.svg" />
+                        <img alt="investment bot" className="h-48 lg:h-auto" src="../../dist/images/error-illustration.svg" />
                     </div>
                     <div className="text-white mt-10 lg:mt-0">
                         <div className="intro-x text-6xl font-medium">404</div>

@@ -60,6 +60,19 @@ export const ACCOUNT_VERIFY = gql`
     }
     ${USER_PROP}
 `;
+export const NEW_PASSWORD = gql`
+    mutation NewPassword($email: String!, $password: String!) {
+        NewPassword(email: $email, password: $password) {
+            message
+            doc {
+                ...UserProps
+                referralCode
+            }
+            token
+        }
+    }
+    ${USER_PROP}
+`;
 
 export const GET_YOUR_REFERRALS = gql`
     query GetYourReferrals {
