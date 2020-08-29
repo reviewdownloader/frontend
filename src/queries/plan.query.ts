@@ -10,6 +10,7 @@ export const PLAN_PROP = gql`
         days_to_payout
         title
         weekly_payout_interval
+        max_amount
     }
 `;
 export const GET_PLANS = gql`

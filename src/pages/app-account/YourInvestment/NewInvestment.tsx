@@ -36,7 +36,7 @@ const NewInvestment: FC<iProp> = ({ onCancel }) => {
                 <form
                     onSubmit={async (event) => {
                         event.preventDefault();
-                        if (plan && amount < plan.amount) {
+                        if (plan && (amount < plan.amount || amount > plan.max_amount)) {
                             toast.error(t("message.amount.less"));
                         } else {
                             await createFunc({
@@ -96,8 +96,9 @@ const NewInvestment: FC<iProp> = ({ onCancel }) => {
                                         <div className="text-gray-800 text-center mt-5">
                                             <strong>{plan.percent}% percent ROI</strong>
                                             <span className="mx-1 text-theme-1">•</span>Payout Interval - <strong>Every {plan.weekly_payout_interval} </strong>{" "}
-                                            {plan.weekly_payout_interval > 1 ? "weeks" : "week"} <span className="mx-1 text-theme-1">•</span> Minimum Investment -{" "}
-                                            <strong> ${toCurrency(plan.amount)}</strong>
+                                            {plan.weekly_payout_interval > 1 ? "weeks" : "week"} <span className="mx-1 text-theme-1">•</span>
+                                            Minimum Investment - <strong> ${toCurrency(plan.amount)}</strong> <span className="mx-1 text-theme-1">•</span>
+                                            Maximum Investment - <strong> ${toCurrency(plan.max_amount)}</strong>
                                         </div>
                                     </div>
                                     <div className="flex flex-wrap -mx-3 mb-6">

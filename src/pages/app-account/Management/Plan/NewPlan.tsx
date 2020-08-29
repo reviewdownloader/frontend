@@ -8,6 +8,7 @@ import { CREATE_PLAN } from "../../../../queries/plan.query";
 
 const NewPlan = () => {
     const [amount, setAmount] = useState<number>(0);
+    const [maxAmount, setMaxAmount] = useState<string>("0");
     const [canReinvestment, setCan_reinvestment] = useState<boolean>(true);
     const [percent, setPercent] = useState<number>(0);
     const [daysToPayout, setDays_to_payout] = useState<number>(0);
@@ -44,6 +45,7 @@ const NewPlan = () => {
                                                 daysToPayout,
                                                 title,
                                                 weeklyPayoutInterval,
+                                                maxAmount,
                                             },
                                         },
                                     });
@@ -65,7 +67,7 @@ const NewPlan = () => {
                                         />
                                     </div>
                                     <div className="mt-3">
-                                        <label>Amount</label>
+                                        <label>Minimum Amount</label>
                                         <input
                                             type="number"
                                             required
@@ -75,6 +77,18 @@ const NewPlan = () => {
                                         />
                                     </div>
                                     <div className="mt-3">
+                                        <label>Maximum Amount</label>
+                                        <input
+                                            type="number"
+                                            required
+                                            onChange={({ currentTarget: { value, validity } }) => validity.valid && setMaxAmount(value)}
+                                            defaultValue={maxAmount}
+                                            className="input w-full border mt-2"
+                                        />
+                                    </div>
+                                </div>
+                                <div className="col-span-12 xl:col-span-6">
+                                    <div >
                                         <label>Percentage %</label>
                                         <input
                                             type="number"
@@ -84,9 +98,7 @@ const NewPlan = () => {
                                             className="input w-full border mt-2"
                                         />
                                     </div>
-                                </div>
-                                <div className="col-span-12 xl:col-span-6">
-                                    <div>
+                                    <div className="mt-3">
                                         <label>Days to Payout</label>
                                         <input
                                             id="daysToPayout"

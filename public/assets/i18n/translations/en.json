@@ -59,7 +59,7 @@
     "investment.new.amount": "Enter Amount",
     "investment.new.plan": "Select investment Plan",
     "min-amount": "Amount mustn't be less then",
-    "message.amount.less": "Invalid investment! Check the minimum amount.",
+    "message.amount.less": "Failed! Investment amount must be within range.",
     "plan.title": "Current Plan",
     "pay.text": "Make Payment",
     "investment.payment": "Investment Payment",

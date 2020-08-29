@@ -52,7 +52,9 @@ const PlanItems: FC<iProps> = ({ items }) => {
                                         <strong>{idx + 1}</strong>
                                     </td>
                                     <td>{item.title}</td>
-                                    <td className="text-center font-bold">${toCurrency(item.amount)}</td>
+                                    <td className="text-center font-bold">
+                                        ${toCurrency(item.amount)} - ${toCurrency(item.max_amount)}
+                                    </td>
                                     <td className="text-center font-bold">{item.percent}%</td>
                                     <td className="text-center">{item.can_reinvestment ? <CheckCircle className="h-8 text-theme-9" /> : <CloseCircle className="h-8 text-theme-6" />}</td>
                                     <td className="table-report__action w-56">
@@ -103,6 +105,7 @@ const PlanItems: FC<iProps> = ({ items }) => {
                                                 title: active.title,
                                                 weeklyPayoutInterval: active.weekly_payout_interval,
                                                 canReinvestment: active.can_reinvestment,
+                                                maxAmount: active.max_amount + "",
                                             },
                                         },
                                     });
@@ -123,7 +126,7 @@ const PlanItems: FC<iProps> = ({ items }) => {
                                         />
                                     </div>
                                     <div className="col-span-6 sm:col-span-6 mt-3">
-                                        <label htmlFor="amount">Amount</label>
+                                        <label htmlFor="amount">Minimum Amount</label>
                                         <input
                                             onChange={({ currentTarget: { value, validity } }) => validity.valid && setActive({ ...active, amount: parseInt(value) })}
                                             type="number"
@@ -132,6 +135,18 @@ const PlanItems: FC<iProps> = ({ items }) => {
                                             required
                                             id="amount"
                                             defaultValue={active?.amount}
+                                        />
+                                    </div>
+                                    <div className="col-span-6 sm:col-span-6 mt-3">
+                                        <label htmlFor="amount">Maximum Amount</label>
+                                        <input
+                                            onChange={({ currentTarget: { value, validity } }) => validity.valid && setActive({ ...active, max_amount: parseInt(value) })}
+                                            type="number"
+                                            name="amount"
+                                            className="input w-full border mt-2 flex-1"
+                                            required
+                                            id="amount"
+                                            defaultValue={active?.max_amount}
                                         />
                                     </div>
                                     <div className="col-span-6 sm:col-span-6 mt-3">
