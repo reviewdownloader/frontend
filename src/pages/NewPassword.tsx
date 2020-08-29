@@ -5,7 +5,6 @@ import PrimaryButton, { ButtonType } from "../components/Button";
 import { ArrowRight } from "@styled-icons/feather";
 import { useTranslation } from "react-i18next";
 import { Redirect } from "react-router-dom";
-import { LOGIN } from "../queries/user.query";
 import { useMutation } from "@apollo/react-hooks";
 import { authService } from "../services/Authentication.Service";
 import { toast } from "react-toastify";
