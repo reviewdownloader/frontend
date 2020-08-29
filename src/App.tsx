@@ -12,6 +12,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import SecuredRoute from "./components/SecuredRoute";
 import AppAccount from "./pages/app-account/index";
+import Verify from "./pages/Verify";
 
 function App() {
     document.body.className = "app";
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/create-account" component={CreateAccount} />
                 <Route path="/forgot-password" component={ForgotPassword} />
                 <SecuredRoute path="/app" component={AppAccount} />
+                <Route path="/account/verify" component={Verify} />
                 <Route component={NotFound} />
             </Switch>
             <ToastContainer position="top-center" />

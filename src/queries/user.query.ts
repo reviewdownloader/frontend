@@ -47,6 +47,19 @@ export const LOGIN = gql`
     }
     ${USER_PROP}
 `;
+export const ACCOUNT_VERIFY = gql`
+    mutation VerifyAccount($id: ID!) {
+        VerifyAccount(id: $id) {
+            message
+            doc {
+                ...UserProps
+                referralCode
+            }
+            token
+        }
+    }
+    ${USER_PROP}
+`;
 
 export const GET_YOUR_REFERRALS = gql`
     query GetYourReferrals {
