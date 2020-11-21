@@ -21,6 +21,8 @@ const Investments: FC<iProp> = ({ items }) => {
     const [wallet, setWallet] = useState("");
     const [week, setWeek] = useState(1);
     const [cWeek, setCWeek] = useState(4);
+    const [showAddress, setShowAddress] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const [MakePaymentFunc, { loading: mLoading }] = useMutation(MAKE_PAYMENT, {
         onError: (er) => toast.error(CleanMessage(er.message)),
@@ -182,44 +184,72 @@ const Investments: FC<iProp> = ({ items }) => {
                                 <b>{t("plan.title")}</b>
                                 <h6>{active?.plan.title}</h6>
                             </div>
-                            <div className="col-span-12 sm:col-span-12">
-                                <b>Receiver Wallet Address</b>
-                                <h6>{app.wallet}</h6>
-                            </div>
-                            <hr className="bg-theme-1 mt-3" />
-                            <div className="col-span-12 sm:col-span-12">
-                                <label>Payment wallet Address</label>
-                                <input
-                                    defaultValue={wallet}
-                                    onChange={({ currentTarget: { value } }) => setWallet(value)}
-                                    type="text"
-                                    className="input w-full border mt-2 flex-1"
-                                    required
-                                    placeholder="Enter the wallet address of the sender"
-                                />
-                            </div>
+                            {showAddress && (
+                                <>
+                                    <div className="col-span-12 sm:col-span-12">
+                                        <b>Receiver Wallet Address</b>
+                                        <h3 className="text-xl font-bold text-green-500">{app.wallet}</h3>
+                                    </div>
+                                    <hr className="bg-theme-1 mt-3" />
+                                    <div className="col-span-12 sm:col-span-12">
+                                        <label>Payment wallet Address</label>
+                                        <input
+                                            defaultValue={wallet}
+                                            onChange={({ currentTarget: { value } }) => setWallet(value)}
+                                            type="text"
+                                            className="input w-full border mt-2 flex-1"
+                                            required
+                                            placeholder="Enter the wallet address of the sender"
+                                        />
+                                    </div>
+                                </>
+                            )}
+                            {!showAddress && (
+                                <>
+                                    <div className="col-span-12 sm:col-span-12">
+                                        <LoadingIcon loading={loading} />
+                                    </div>
+                                    <div className="col-span-12 sm:col-span-12">
+                                        <button
+                                            onClick={() => {
+                                                setLoading(true);
+                                                setTimeout(() => {
+                                                    setLoading(false);
+                                                    setShowAddress(true);
+                                                }, 1500);
+                                            }}
+                                            type="button"
+                                            className="button w-full bg-theme-1 text-white"
+                                        >
+                                            Get Payment Wallet Address
+                                        </button>
+                                    </div>
+                                </>
+                            )}
                         </div>
 
-                        <div className="px-5 py-3 text-right border-t border-gray-200">
-                            <button type="button" data-dismiss="modal" className="button w-20 border text-gray-700 mr-1">
-                                Cancel
-                            </button>
-                            <button
-                                onClick={async () => {
-                                    if (wallet) {
-                                        await MakePaymentFunc({
-                                            variables: { id: active?.id, wallet },
-                                        });
-                                    } else {
-                                        toast.info("Enter the wallet address used for the transaction.");
-                                    }
-                                }}
-                                type="button"
-                                className="button w-35 bg-theme-1 text-white"
-                            >
-                                {t("pay.done")} <ArrowForward className="w-4 h-4 ml-2" />
-                            </button>
-                        </div>
+                        {showAddress && (
+                            <div className="px-5 py-3 text-right border-t border-gray-200">
+                                <button type="button" data-dismiss="modal" className="button w-20 border text-gray-700 mr-1">
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={async () => {
+                                        if (wallet) {
+                                            await MakePaymentFunc({
+                                                variables: { id: active?.id, wallet },
+                                            });
+                                        } else {
+                                            toast.info("Enter the wallet address used for the transaction.");
+                                        }
+                                    }}
+                                    type="button"
+                                    className="button w-35 bg-theme-1 text-white"
+                                >
+                                    {t("pay.done")} <ArrowForward className="w-4 h-4 ml-2" />
+                                </button>
+                            </div>
+                        )}
                     </div>
                 </div>
 
