@@ -2,7 +2,7 @@ import React, { FC, useState } from "react";
 import { Info, Calendar, AlertCircle, CheckCircle } from "@styled-icons/feather";
 import { useTranslation } from "react-i18next";
 import { Investment } from "../../../model/investment.model";
-import { toCurrency, CleanDate, CleanMessage } from "./../../../context/App";
+import { toCurrency, CleanDate, CleanMessage, CopyToClipboard } from "./../../../context/App";
 import { Wallet, Trash, ArrowForward, GitCommit, CloseCircle } from "@styled-icons/ionicons-outline";
 import { useMutation } from "@apollo/react-hooks";
 import { MAKE_PAYMENT, CLOSE_INVESTMENT, REINVESTMENT, COMPOUND_INVESTMENT } from "../../../queries/investment.query";
@@ -188,7 +188,21 @@ const Investments: FC<iProp> = ({ items }) => {
                                 <>
                                     <div className="col-span-12 sm:col-span-12">
                                         <b>Receiver Wallet Address</b>
-                                        <h3 className="text-xl font-bold text-green-500">{app.wallet}</h3>
+                                        <div className="flex" id="parent-copy">
+                                            <input
+                                                value={app.wallet}
+                                                className="rounded-l-lg p-4 w-full border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-gray-200"
+                                                disabled
+                                                placeholder="click to copy"
+                                            />
+                                            <button
+                                                type="button"
+                                                onClick={() => CopyToClipboard("parent-copy", app.wallet)}
+                                                className="px-8 rounded-r-lg bg-green-500  text-white font-bold p-4 uppercase border-green-500 border-t border-b border-r"
+                                            >
+                                                copy
+                                            </button>
+                                        </div>
                                     </div>
                                     <hr className="bg-theme-1 mt-3" />
                                     <div className="col-span-12 sm:col-span-12">

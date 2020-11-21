@@ -62,3 +62,36 @@ export const GetValueFromURL = (name: string, url: string = ""): string => {
     }
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 };
+
+/**
+ * copies text to clipboard
+ * @param parentId parent container's id
+ * @param content content to copy to clipboard
+ */
+export const CopyToClipboard = (parentId: string, content: string) => {
+    /** Create element */
+    const textField = document.createElement("textarea");
+    textField.innerText = content;
+    const parentElement = document.getElementById(parentId);
+    parentElement?.appendChild(textField);
+    /** Select text */
+    if (isIOS()) {
+        let range = document.createRange();
+        range.selectNodeContents(textField);
+        let selection = window.getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        textField.setSelectionRange(0, 999999);
+    } else {
+        textField.select();
+    }
+    // copy and remove element
+    document.execCommand("copy");
+    parentElement?.removeChild(textField);
+
+    alert(`${content} to clipboard!`);
+};
+
+function isIOS() {
+    return navigator.userAgent.match(/ipad|iphone/i);
+}
