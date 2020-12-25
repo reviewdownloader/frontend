@@ -17,7 +17,6 @@
 }
 
 .bg-theme-18 {
-    --bg-opacity: 1;
     background-color: #14ca6f !important;
     background-color: rgba(216, 248, 188, 0.7) !important;
 }
