@@ -1,4 +1,4 @@
-New Urama's investment bot frontend
+JPIS bot frontend
 
 ## Available Scripts
 
